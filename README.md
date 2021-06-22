@@ -1,4 +1,4 @@
-<img width="938" alt="DEEP-HLA_logo" src="https://user-images.githubusercontent.com/67576643/90484405-14847300-e171-11ea-9989-d112f1f1d81f.png">
+<img width="300" src="https://user-images.githubusercontent.com/78953113/122951074-f5b9c300-d3b7-11eb-852c-7da153bc4ee0.jpg">
 
 # OMARU
 Trans-Phar (integration of **Trans**criptome-wide association study and **Phar**macological database)
