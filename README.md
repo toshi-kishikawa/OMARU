@@ -3,7 +3,7 @@
 </p>
 
 # OMARU
-OMARU (**<u>O</u>**mnibus **<u>m</u>**etagenome-wide **<u>a</u>**ssociation study with **<u>r</u>**ob**<u>u</u>**stness)
+OMARU (**__O__**mnibus **__m__**etagenome-wide **__a__**ssociation study with **__r__**ob**__u__**stness)
 
 This software achieves *in silico* screening of chemical compounds, which have inverse effects in expression profiles compared with genetically regulated gene expression of common diseases, from large-scale pharmacological database (Connectivity Map [CMap] L1000 library).
 
