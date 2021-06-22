@@ -6,7 +6,7 @@ Trans-Phar (integration of **Trans**criptome-wide association study and **Phar**
 This software achieves *in silico* screening of chemical compounds, which have inverse effects in expression profiles compared with genetically regulated gene expression of common diseases, from large-scale pharmacological database (Connectivity Map [CMap] L1000 library).
 
 ## Overview
-![Graphical_abstract](https://user-images.githubusercontent.com/69625255/90997292-21371a00-e5fc-11ea-9c92-8980b999419d.png)
+![Graphical_abstract](https://user-images.githubusercontent.com/78953113/122951074-f5b9c300-d3b7-11eb-852c-7da153bc4ee0.jpg)
 
 ## Publication/Citation
 
