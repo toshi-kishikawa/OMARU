@@ -3,17 +3,15 @@
 </p>
 
 # OMARU
-OMARU (**O**mnibus **m**etagenome-wide **a**ssociation study with **r**ob**u**stness)
+OMARU (**O**mnibus **m**etagenome-wide **a**ssociation study with **r**ob**u**stness) is a new end-to-end analysis workflow that covers a wide range of microbiome analysis from phylogenetic and functional profiling to case-control metagenome-wide association studies (MWAS).
 
-This software achieves *in silico* screening of chemical compounds, which have inverse effects in expression profiles compared with genetically regulated gene expression of common diseases, from large-scale pharmacological database (Connectivity Map [CMap] L1000 library).
+Through implementation of rigorous quality control (QC) of shotgun sequence reads, samples, clades, and genes, OMARU constructs phylogenetic and functional profiling of the metagenome, the two main analytical pipelines. Three major components of the case-control association tests of MWAS (i.e., phylogenetic, gene, and biological pathway analyses) are subsequently conducted with rigorous handling of false positives in statistical analysis. OMARU visualizes attractive figures which enables comprehensive summary of the association test results. Furthermore, OMARU can evaluate pathway-level links between the metagenome and the germline genome-wide association studies (GWAS) of the host genome, as well as the links between taxa and genes in the metagenome. OMARU is a flexible and extensible workflow that can be customized, such as adding an up-to-date database. 
 
 ## Overview
-![Graphical_abstract](https://user-images.githubusercontent.com/78953113/122951074-f5b9c300-d3b7-11eb-852c-7da153bc4ee0.jpg)
+![Graphical_abstract](https://user-images.githubusercontent.com/78953113/122957772-39fb9200-d3bd-11eb-86d0-f2421ab638a7.png)
 
 ## Publication/Citation
 
-*Human Molecular Genetics* 2021 Konuma T, Ogawa K, Okada Y. "Integration of genetically regulated gene expression and pharmacological library provides therapeutic drug candidates."
-https://doi.org/10.1093/hmg/ddab049
 
 
 ## Requirements
