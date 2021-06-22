@@ -1,5 +1,6 @@
-<img width="300" src="https://user-images.githubusercontent.com/78953113/122951074-f5b9c300-d3b7-11eb-852c-7da153bc4ee0.jpg">
-
+<p align="center">
+  <img width="500" src="https://user-images.githubusercontent.com/78953113/122951074-f5b9c300-d3b7-11eb-852c-7da153bc4ee0.jpg" />
+</p>
 # OMARU
 Trans-Phar (integration of **Trans**criptome-wide association study and **Phar**macological database)
 
