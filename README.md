@@ -5,7 +5,12 @@
 # OMARU
 OMARU (**O**mnibus **m**etagenome-wide **a**ssociation study with **r**ob**u**stness) is a new end-to-end analysis workflow that covers a wide range of microbiome analysis from phylogenetic and functional profiling to case-control metagenome-wide association studies (MWAS).
 
-- implementation of rigorous quality control (QC) of shotgun sequence reads, samples, clades, and genes, OMARU constructs phylogenetic and functional profiling of the metagenome, the two main analytical pipelines. Three major components of the case-control association tests of MWAS (i.e., phylogenetic, gene, and biological pathway analyses) are subsequently conducted with rigorous handling of false positives in statistical analysis. OMARU visualizes attractive figures which enables comprehensive summary of the association test results. Furthermore, OMARU can evaluate pathway-level links between the metagenome and the germline genome-wide association studies (GWAS) of the host genome, as well as the links between taxa and genes in the metagenome. OMARU is a flexible and extensible workflow that can be customized, such as adding an up-to-date database. 
+- implement rigorous quality control (QC) of shotgun sequence reads, samples, clades, and genes.
+- construct phylogenetic and functional profiling of the metagenome. 
+- conduct three major components of the case-control association tests of MWAS (i.e., phylogenetic, gene, and biological pathway analyses) with rigorous handling of false positives in statistical analysis.
+- visualize attractive figures which enables comprehensive summary of the association test results.
+- evaluate pathway-level links between the metagenome and the germline genome-wide association studies (GWAS) of the host genome, 
+- link taxa and genes in the metagenome. 
 
 ## Overview
 ![Graphical_abstract](https://user-images.githubusercontent.com/78953113/122957772-39fb9200-d3bd-11eb-86d0-f2421ab638a7.png)
@@ -15,23 +20,21 @@ OMARU (**O**mnibus **m**etagenome-wide **a**ssociation study with **r**ob**u**st
 
 
 ## Requirements
-- R
-- dichromat (R package) (installing by install.packages("dichromat"))
-- python 3.X
-- scipy
-- numpy
-- pandas
-- math
-- cycler
-- kiwisolver
-- FOCUS (Fine-mapping Of CaUsal gene Sets) as TWAS software
+MetaLAFFA requires [**Conda**](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) (version 4.8 or greater) for installation and operation.
 
 
-## Installation (Trans-Phar)
-In order to get started with **Trans-Phar**, you can just clone this repo as follows;
-```bash
-git lfs clone https://github.com/konumat/Trans-Phar.git
-cd ./Trans-Phar
+## Installation (OMARU)
+To install OMARU via Conda, create a new environment using the following command
+
+    # Download conda-pack of OMARU.
+    conda create -n metalaffa metalaffa -c bioconda -c borenstein-lab
+    # Unpack environment into directory `my_env`
+    $ mkdir -p my_env
+    $ git clone https://github.com/toshi-kishikawa/OMARU
+    $ tar -xzf OMARU.tar.gz -C my_env
+
+    # Activate the environment. This adds `my_env/bin` to your path
+    $ source my_env/bin/activate```bash
 
 #unzip QCed Cmap L1000 data
 cd ./Cmap_QCeddata
