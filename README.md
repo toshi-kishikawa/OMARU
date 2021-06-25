@@ -16,7 +16,7 @@ OMARU (**O**mnibus **m**etagenome-wide **a**ssociation study with **r**ob**u**st
 ![Graphical_abstract](https://user-images.githubusercontent.com/78953113/122957772-39fb9200-d3bd-11eb-86d0-f2421ab638a7.png)
 
 ## Publication/Citation
-
+Currently under development
 
 
 ## Requirements
