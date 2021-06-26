@@ -20,10 +20,10 @@ Currently under development
 
 
 ## Requirements
-MetaLAFFA requires [**Conda**](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) (version 4.8 or greater) for installation and operation.
+OMARU requires [**Conda**](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) (version 4.8 or greater) for installation and operation.
 
 
-## Installation (OMARU)
+## Installation of OMARU
 To install OMARU via Conda, create a new environment using the following command
 
     # Download conda-pack of OMARU.
@@ -35,50 +35,36 @@ To install OMARU via Conda, create a new environment using the following command
 
     # Activate the environment. This adds `my_env/bin` to your path
     $ source my_env/bin/activate```bash
+    
+### Download of reference databases 
 
-#unzip QCed Cmap L1000 data
-cd ./Cmap_QCeddata
-for filename in $( ls *.gz ); do
-echo ${filename}
-gunzip ${filename}
-done
+Default reference databases can be downloaded and prepared for OMARU using the `prepare_databases.py` script. These databases will be installed in the base directory for the `metalaffa` environment, which can be found at `$CONDA_PREFIX/MetaLAFFA`. Activate the `metalaffa` environment and then run:
 
-cd ../
-```
+    # Download and prepare default reference databases
+    prepare_databases.py -hr -km -u
 
-## Installation (FOCUS)
-You have to install [FOCUS (Fine-mapping Of CaUsal gene Sets) soft ware] (https://github.com/bogdanlab/focus) as follows.
-For detailed explanations, please visit [the original repository and installing tutorial] (https://github.com/bogdanlab/focus) and [wiki] (https://github.com/bogdanlab/focus/wiki).
+where each option to the script specifies a different reference database:
 
-When installing FOCUS, please make focus folder under the Trans-Phar folder.
+`-hr`: Download and prepare the database of human reference and decoy sequences (used in the 1000 genomes project) for host filtering.
 
-```bash
-git clone https://github.com/bogdanlab/focus.git
-cd ./focus
-python setup.py install
-cd ../
-```
+`-km`: Download KEGG ko-to-module and ko-to-pathway mappings.
+
+`-u`: Download and prepare the UniRef90 database for read mapping and functional annotation.
+
+**Note**: This process can be time and resource intensive, taking several hours, ~108GB of free disk space, and ~40GB of RAM.
+
+By default, MetaLAFFA is able to interface with Sun Grid Engine (SGE) and HTCondor clusters. This is achieved via the use of Python job submission wrapper scripts, included in the `$CONDA_PREFIX/MetaLAFFA/src/` directory (`$CONDA_PREFIX/MetaLAFFA/src/sge_submission_wrapper.py` and `$CONDA_PREFIX/src/condor_submission_wrapper.py` respectively). If your cluster uses a different cluster management system, then you will need to create your own job submission wrapper by following these steps:
 
 ## Usage
-### Step 1: Prepare your input 
-All you need is a text file with GWAS summary statistics. (A file extension is .sumstats)
+### Step 1: Preparing 
 
-| Column | Column name | Descriptions |
-|:-----------:|:-----------:|:------------|
-|1|CHR|Chromosome|
-|2|SNP|rsID|
-|3|BP|BP position|
-|4|A1|Effect allele|
-|5|A2|Other allele|
-|6|MAF|Minor allele frequency (*optional*)|
-|7|N|#Samples|
-|8|BETA|Beta (effect allele)|
-|9|P|P-value|
+1-1. Project directory
+After installation and database preparation, you can create a new MetaLAFFA project directory to try out MetaLAFFA. With your MetaLAFFA Conda environment active, you can create a new project directory using the associated script as follows:
 
-Please have a look at an example input at `./tutorial_input/Schizo.sumstats`.
+<!-- -->
 
-
-### Step 2: Put your input data to predetermined folder (named as Input_GWASsummary)
+    create_new_MetaLAFFA_project.py OMARU_project_dir
+    cd OMARU_project_dir
 
 
 ```bash
@@ -91,7 +77,9 @@ gunzip ./tutorial_input/Schizo.sumstats.gz
 cp ./tutorial_input/Schizo.sumstats ./Input_GWASsummary
 ```
 
-### Step 3: Trans-Phar from GWAS summary to chemical compounds in all-in-one script
+### Step 3: Setting
+
+Note: Any configuration changes made in the configuration module located at $CONDA_PREFIX/MetaLAFFA/config will be the default configurations for any newly created projects. Thus, if you have custom settings that you think should be preset in any new projects, you should make those changes to this base configuration module.
 
 1) If you input ICD-10 code (for example, F20 for Schizophrenia as below), you will also get gold-standard drug (approved drugs for ICD-10 F20 in ChEMBL and TTD [Therapeutic Target Database]) in an output Q-Q plot data.
 ICD-10 codes which are not listed in ChEMBL and TTD are not applicable.
@@ -107,7 +95,7 @@ cd ./script
 ./Trans-Phar.sh
 ```
 
-
+### Step 2: Put your input data to predetermined folder (named as Input_GWASsummary)
 ## Output
 
 1) The example TWAS result outputs are as follows (if you use tutorial GWAS data);
