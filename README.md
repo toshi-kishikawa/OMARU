@@ -36,9 +36,19 @@ To install OMARU via Conda, create a new environment using the following command
     # Activate the environment. This adds `my_env/bin` to your path
     $ source my_env/bin/activate```bash
     
-### Download of reference databases 
+## Download of reference databases 
+### Human genome
+Default reference databases can be downloaded and prepared for OMARU using the `make_reference_UniRef90.sh` script. These databases will be installed in the base directory for the `metalaffa` environment, which can be found at `$CONDA_PREFIX/MetaLAFFA`. Activate the `metalaffa` environment and then run:
 
-Default reference databases can be downloaded and prepared for OMARU using the `prepare_databases.py` script. These databases will be installed in the base directory for the `metalaffa` environment, which can be found at `$CONDA_PREFIX/MetaLAFFA`. Activate the `metalaffa` environment and then run:
+
+
+
+
+
+
+
+
+Default reference databases can be downloaded and prepared for OMARU using the `make_reference_UniRef90.sh` script. These databases will be installed in the base directory for the `metalaffa` environment, which can be found at `$CONDA_PREFIX/MetaLAFFA`. Activate the `metalaffa` environment and then run:
 
     # Download and prepare default reference databases
     prepare_databases.py -hr -km -u
