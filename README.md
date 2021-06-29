@@ -37,44 +37,33 @@ To install OMARU via Conda, create a new environment using the following command
     source my_env/bin/activate
     
 ## Download of reference databases 
-### Read QC
- Users can flexibly customize the reference data. Default reference databases of phix, adapters, and human genome can be downloaded and prepared for OMARU using the `Prepare_reference_readQC.sh` in `my_env/OMARU_databases`. These databases will be installed in `my_env/OMARU_databases`. Activate the `OMARU` environment and then run:
 
+ Users can flexibly customize the reference data. Default reference databases can be downloaded and prepared for OMARU using scripts in `my_env/OMARU_databases` as follows. These databases will be installed in `my_env/OMARU_databases`. Activate the `OMARU` environment and then run:
+
+    # Download and prepare reference databases of phix, adapters (in Trimmomatic), and human genome (hg38)
     Prepare_reference_read_QC.sh my_env/OMARU_databases
-
-### Phylogenetic analysis 
-
-
-
-
-
-
-
-
-
-
-Default reference databases can be downloaded and prepared for OMARU using the `make_reference_UniRef90.sh` script. These databases will be installed in the base directory for the `metalaffa` environment, which can be found at `$CONDA_PREFIX/MetaLAFFA`. Activate the `metalaffa` environment and then run:
-
-    # Download and prepare default reference databases
-    prepare_databases.py -hr -km -u
-
-where each option to the script specifies a different reference database:
-
-`-hr`: Download and prepare the database of human reference and decoy sequences (used in the 1000 genomes project) for host filtering.
-
-`-km`: Download KEGG ko-to-module and ko-to-pathway mappings.
-
-`-u`: Download and prepare the UniRef90 database for read mapping and functional annotation.
+    
+    # Download and prepare reference databases of phylogenetic analyses (based on ChocoPhlAn)
+    Prepare_reference_read_QC.sh my_env/OMARU_databases
+    
+    # Download and prepare reference databases of functional analyses (based on UniRef90 and GO term)
+    Prepare_reference_UniRef90.sh my_env/OMARU_databases
 
 **Note**: This process can be time and resource intensive, taking several hours, ~108GB of free disk space, and ~40GB of RAM.
 
 By default, MetaLAFFA is able to interface with Sun Grid Engine (SGE) and HTCondor clusters. This is achieved via the use of Python job submission wrapper scripts, included in the `$CONDA_PREFIX/MetaLAFFA/src/` directory (`$CONDA_PREFIX/MetaLAFFA/src/sge_submission_wrapper.py` and `$CONDA_PREFIX/src/condor_submission_wrapper.py` respectively). If your cluster uses a different cluster management system, then you will need to create your own job submission wrapper by following these steps:
 
-## Usage
-### Step 1: Preparing 
+## Create project directory and put your input data
+Users can create a new project directory as follows:
 
-1-1. Project directory
-After installation and database preparation, you can create a new MetaLAFFA project directory to try out MetaLAFFA. With your MetaLAFFA Conda environment active, you can create a new project directory using the associated script as follows:
+Put your input data of metagenomic shotgun sequencing (FASTQ format) to predetermined folder (OMARU_project_dir/data/original_fastq).
+"Sample_ID"_R1.fastq.gz "Sample_ID"_R2.fastq.gz
+
+Also put your sample list with metadata to predetermined folder (OMARU_project_dir/data)
+"original_sample_list.txt"
+
+## Usage
+### Step 1: read QC
 
 <!-- -->
 
