@@ -34,11 +34,16 @@ To install OMARU via Conda, create a new environment using the following command
     tar -xzf OMARU.tar.gz -C my_env
 
     # Activate the environment. This adds `my_env/bin` to your path
-    $ source my_env/bin/activate
+    source my_env/bin/activate
     
 ## Download of reference databases 
-### Human genome
-Default reference databases can be downloaded and prepared for OMARU using the `make_reference_UniRef90.sh` script. These databases will be installed in the base directory for the `metalaffa` environment, which can be found at `$CONDA_PREFIX/MetaLAFFA`. Activate the `metalaffa` environment and then run:
+### Read QC
+ Users can flexibly customize the reference data. Default reference databases of phix, adapters, and human genome can be downloaded and prepared for OMARU using the `Prepare_reference_readQC.sh` in `my_env/OMARU_databases`. These databases will be installed in `my_env/OMARU_databases`. Activate the `OMARU` environment and then run:
+
+    Prepare_reference_read_QC.sh my_env/OMARU_databases
+
+### Phylogenetic analysis 
+
 
 
 
