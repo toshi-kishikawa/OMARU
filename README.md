@@ -28,26 +28,26 @@ To install OMARU via Conda, create a new environment using the following command
 
     # Download conda-pack of OMARU.
     conda create -n metalaffa metalaffa -c bioconda -c borenstein-lab
-    # Unpack environment into directory `my_env`
+    # Unpack environment into directory `<OMARU_dir>`
     mkdir -p my_env
     git clone https://github.com/toshi-kishikawa/OMARU
-    tar -xzf OMARU.tar.gz -C my_env
+    tar -xzf OMARU.tar.gz -C <OMARU_dir>
 
-    # Activate the environment. This adds `my_env/bin` to your path
+    # Activate the environment. This adds `<OMARU_dir>/bin` to your path
     source my_env/bin/activate
     
 ## Download of reference databases 
 
- Users can flexibly customize the reference data. Default reference databases can be downloaded and prepared for OMARU using scripts in `my_env/OMARU_databases` as follows. These databases will be installed in `my_env/OMARU_databases`. Activate the `OMARU` environment and then run:
+ Users can flexibly customize the reference data. Default reference databases can be downloaded and prepared for OMARU using scripts in `<OMARU_dir>/OMARU_databases` as follows. These databases will be installed in `<OMARU_dir>/OMARU_databases`. Activate the `OMARU` environment and then run:
 
-    # Download and prepare reference databases of phix, adapters (in Trimmomatic), and human genome (hg38)
-    Prepare_reference_read_QC.sh my_env/OMARU_databases
+    # Download and prepare reference databases for read QC such as phix, adapters (in Trimmomatic), and human genome (hg38)
+    Prepare_reference_read_QC.sh <OMARU_dir>/OMARU_databases
     
     # Download and prepare reference databases of phylogenetic analyses (based on ChocoPhlAn)
-    Prepare_reference_read_QC.sh my_env/OMARU_databases
+    Prepare_reference_ChocoPhlAn.sh <OMARU_dir>/OMARU_databases
     
     # Download and prepare reference databases of functional analyses (based on UniRef90 and GO term)
-    Prepare_reference_UniRef90.sh my_env/OMARU_databases
+    Prepare_reference_UniRef90.sh <OMARU_dir>/OMARU_databases
 
 **Note**: This process can be time and resource intensive, taking several hours, ~108GB of free disk space, and ~40GB of RAM.
 
@@ -56,11 +56,16 @@ By default, MetaLAFFA is able to interface with Sun Grid Engine (SGE) and HTCond
 ## Create project directory and put your input data
 Users can create a new project directory as follows:
 
-Put your input data of metagenomic shotgun sequencing (FASTQ format) to predetermined folder (OMARU_project_dir/data/original_fastq).
-"Sample_ID"_R1.fastq.gz "Sample_ID"_R2.fastq.gz
+prepare_project_dir.sh <OMARU_project_dir> <OMARU_dir>/OMARU_scripts
 
-Also put your sample list with metadata to predetermined folder (OMARU_project_dir/data)
-"original_sample_list.txt"
+Put your input data of metagenomic shotgun sequencing (FASTQ format) to predetermined folder (<OMARU_project_dir>/data/original_fastq) according to the following format:
+**Name** "<Sample_ID>_R1.fastq.gz" "<Sample_ID>_R2.fastq.gz"
+
+Also put your sample list with metadata to predetermined folder (OMARU_project_dir/data) according to the following format:
+**Name** "original_sample_list.txt"
+**Row**  One sample per row
+**Column** The first three columns are sample ID, gender, age, and other metadata from the fourth column onwards.
+
 
 ## Usage
 ### Step 1: read QC
