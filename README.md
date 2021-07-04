@@ -28,7 +28,7 @@ To install OMARU via Conda, create a new environment using the following command
 
     # Download conda-pack of OMARU.
     conda create -n metalaffa metalaffa -c bioconda -c borenstein-lab
-    # Unpack environment into directory `<OMARU_dir>`
+    # Unpack environment into directory `OMARU_dir`
     mkdir -p my_env
     git clone https://github.com/toshi-kishikawa/OMARU
     tar -xzf OMARU.tar.gz -C <OMARU_dir>
