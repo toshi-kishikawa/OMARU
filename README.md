@@ -46,6 +46,10 @@ To install OMARU via Conda, create a new environment using the following command
     # Download and prepare reference databases of phylogenetic analyses (based on ChocoPhlAn)
     Prepare_reference_ChocoPhlAn.sh OMARU_dir/OMARU_databases
     
+    # if 自分で用意する場合、下記のデータを用意する
+    　 # 1 ~~  各列はAに準ずる
+     
+    
     # Download and prepare reference databases of functional analyses (based on UniRef90 and GO term)
     Prepare_reference_UniRef90.sh OMARU_dir/OMARU_databases
 
@@ -92,15 +96,147 @@ If you are running MetaLAFFA on a cluster, use:
 
 This option will use the submission wrapper and jobscript specified in your project's `config/cluster.py` configuration submodule to submit jobs to your cluster system.
 
-### Step 1: read QC
+### Step 1: Read QC
 
-<!-- -->
-
+```bash
     cd OMARU_project_dir
     snakemake -s OMARU_read_QC.sm 
+```
+
+#### output
+You can check tables and figures of the statistical summary in the QC process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
+
+Select the samples that has passed QC, and update the sample list with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data`. 
 
 
-### Step 2: Setting
+### Step 2: Construct phylogenetic and functional profiling
+
+```bash
+    cd OMARU_project_dir
+    snakemake -s OMARU_QCed1.sm 
+```
+
+#### output
+As in the previous step, you can check tables and figures of the statistical summary in the profiling process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
+
+Select the samples with sufficient quality in the profiling process, and update the sample list with the name `QCed2_sample_list.txt` at `OMARU_project_dir/data`. 
+
+### Step 3: Check the phylogenetic and gene abundance data
+
+```bash
+    cd OMARU_project_dir
+    snakemake -s OMARU_QCed2.sm 
+```
+
+#### output
+You can check tables and figures of the statistical summary of the abundance data at the output directory, `OMARU_project_dir/result/PHYL_QCed2/<Phylogenetic_reference>_graph_basic` and `OMARU_project_dir/result/PHYL_QCed2/<Gene_reference>_graph_basic`.
+
+Select the samples with appropriate profiling data for analysis, and update the sample list with the name `QCed3_sample_list.txt` at `OMARU_project_dir/data`. 
+
+### Step 4-1: Case-control association test for phylogenetic abundance data
+
+```bash
+    cd OMARU_project_dir
+    snakemake -s OMARU_Phyl_AS.sm 
+```
+
+#### output
+You can check tables and figures of the statistical summary in the QC process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
+
+ 
+
+### Step 4-2: Phenotype permutation and visualization of the result in phylogetic association test
+
+
+```bash
+    cd OMARU_project_dir
+    snakemake -s OMARU_read_QC.sm 
+```
+
+#### output
+You can check tables and figures of the statistical summary in the QC process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
+
+Select the samples that has passed QC, and update the sample list with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data`. 
+
+### Step 5-1: Case-control association test for gene abundance data
+
+```bash
+    cd OMARU_project_dir
+    snakemake -s OMARU_read_QC.sm 
+```
+
+#### output
+You can check tables and figures of the statistical summary in the QC process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
+
+Select the samples that has passed QC, and update the sample list with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data`. 
+
+### Step 5-2: Phenotype permutation in gene association test
+
+```bash
+    cd OMARU_project_dir
+    snakemake -s OMARU_read_QC.sm 
+```
+
+#### output
+You can check tables and figures of the statistical summary in the QC process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
+
+Select the samples that has passed QC, and update the sample list with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data`. 
+
+### Step 5-2: Phenotype permutation in gene analysis
+
+```bash
+    cd OMARU_project_dir
+    snakemake -s OMARU_read_QC.sm 
+```
+
+#### output
+You can check tables and figures of the statistical summary in the QC process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
+
+Select the samples that has passed QC, and update the sample list with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data`. 
+
+### Step 5-3: Gene set enrichment analysis
+
+```bash
+    cd OMARU_project_dir
+    snakemake -s OMARU_read_QC.sm 
+```
+
+#### output
+You can check tables and figures of the statistical summary in the QC process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
+
+Select the samples that has passed QC, and update the sample list with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data`. 
+
+### Step 5-4: Comparison of the pathway analysis results between the MWAS and the GWAS
+
+```bash
+    cd OMARU_project_dir
+    snakemake -s OMARU_read_QC.sm 
+```
+
+#### output
+You can check tables and figures of the statistical summary in the QC process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
+
+Select the samples that has passed QC, and update the sample list with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data`. 
+
+### Step 6: Link of phylogenetic and gene abundance data
+
+```bash
+    cd OMARU_project_dir
+    snakemake -s OMARU_read_QC.sm 
+```
+
+#### output
+You can check tables and figures of the statistical summary in the QC process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
+
+Select the samples that has passed QC, and update the sample list with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data`. 
+
+
+
+
+
+
+
+
 
 Note: Any configuration changes made in the configuration module located at $CONDA_PREFIX/MetaLAFFA/config will be the default configurations for any newly created projects. Thus, if you have custom settings that you think should be preset in any new projects, you should make those changes to this base configuration module.
 
