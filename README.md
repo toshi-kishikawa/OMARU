@@ -53,24 +53,24 @@ To install OMARU via Conda, create a new environment using the following command
 
 By default, MetaLAFFA is able to interface with Sun Grid Engine (SGE) and HTCondor clusters. This is achieved via the use of Python job submission wrapper scripts, included in the `$CONDA_PREFIX/MetaLAFFA/src/` directory (`$CONDA_PREFIX/MetaLAFFA/src/sge_submission_wrapper.py` and `$CONDA_PREFIX/src/condor_submission_wrapper.py` respectively). If your cluster uses a different cluster management system, then you will need to create your own job submission wrapper by following these steps:
 
-## Create project directory <OMARU_project_dir> and put your input data
+## Create project directory <OMARU_project_dir> and set your data
 Users can create a new project directory as follows:
 
     prepare_project_dir.sh OMARU_project_dir OMARU_dir/OMARU_scripts
 
 Put your input data of metagenomic shotgun sequencing (FASTQ format) to predetermined folder (`OMARU_project_dir/data/original_fastq`) according to the following format:
 
-**Name** "<Sample_ID>_R1.fastq.gz" "<Sample_ID>_R2.fastq.gz"
+**Name** `<Sample_ID>_R1.fastq.gz` `<Sample_ID>_R2.fastq.gz`
 
 Put your sample list with metadata to predetermined folder (`OMARU_project_dir/data`) according to the following format:
 
-**Name** "original_sample_list.txt"
+**Name** `original_sample_list.txt`
 
 **Row**  One sample per row
 
 **Column** The first three columns are sample ID, gender, age, and other metadata from the fourth column onwards.
 
-Arrange some parameters of `OMARU_project_dir/config.yaml` that you may want to change
+Arrange some parameters of `OMARU_project_dir/config.yaml` that you may want to change. 
 
 
 ## Usage
@@ -96,19 +96,9 @@ This option will use the submission wrapper and jobscript specified in your proj
 
 <!-- -->
 
-    create_new_MetaLAFFA_project.py OMARU_project_dir
     cd OMARU_project_dir
+    snakemake -s OMARU_read_QC.sm 
 
-
-```bash
-mkdir ./Input_GWASsummary
-mkdir ./Input_GWASsummary_done
-mkdir ./Output
-
-#if you use tutorial GWAS summary data;
-gunzip ./tutorial_input/Schizo.sumstats.gz
-cp ./tutorial_input/Schizo.sumstats ./Input_GWASsummary
-```
 
 ### Step 2: Setting
 
