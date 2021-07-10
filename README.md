@@ -59,11 +59,15 @@ Users can create a new project directory as follows:
     prepare_project_dir.sh OMARU_project_dir OMARU_dir/OMARU_scripts
 
 Put your input data of metagenomic shotgun sequencing (FASTQ format) to predetermined folder (`OMARU_project_dir/data/original_fastq`) according to the following format:
+
 **Name** "<Sample_ID>_R1.fastq.gz" "<Sample_ID>_R2.fastq.gz"
 
 Put your sample list with metadata to predetermined folder (`OMARU_project_dir/data`) according to the following format:
+
 **Name** "original_sample_list.txt"
+
 **Row**  One sample per row
+
 **Column** The first three columns are sample ID, gender, age, and other metadata from the fourth column onwards.
 
 Arrange some parameters of `OMARU_project_dir/config.yaml` that you may want to change
