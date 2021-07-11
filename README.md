@@ -52,9 +52,9 @@ To install OMARU via Conda, create a new environment using the following command
 ```bash
     $ Prepare_reference_ChocoPhlAn.sh OMARU_dir/OMARU_databases
    ```
-    if you adopt your original phylogenetic reference data, 
-    - FASTA file should be converted to the format of bowtie reference.
-    - The additional following data should be prepared in `OMARU_dir/OMARU_databases`.
+if you adopt your original phylogenetic reference data, 
+  - FASTA file should be converted to the format of bowtie reference.
+  - The additional following data should be prepared in `OMARU_dir/OMARU_databases`.
 
 &nbsp; 1 `NCBI_species_scaffold_<phylogenetic_reference>.txt` (refer to `NCBI_species_scaffold_EXAMPLE.txt`)
 
