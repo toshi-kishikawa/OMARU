@@ -26,29 +26,44 @@ OMARU requires [**Conda**](https://docs.conda.io/projects/conda/en/latest/user-g
 ## Installation of OMARU
 To install OMARU via Conda, create a new environment using the following command:
 
+```bash
     # Download conda-pack of OMARU.
     conda create -n metalaffa metalaffa -c bioconda -c borenstein-lab
-    # Unpack environment into directory <OMARU_dir>
+   
+   # Unpack environment into directory <OMARU_dir>
     mkdir -p OMARU_dir
     git clone https://github.com/toshi-kishikawa/OMARU
     tar -xzf OMARU.tar.gz -C OMARU_dir
 
     # Activate the environment. This adds `OMARU_dir/bin` to your path
     source OMARU_dir/bin/activate
-    
+ ```
+ 
 ## Download of reference databases 
 
  Users can flexibly customize the reference data. Default reference databases can be downloaded and prepared for OMARU using scripts in `OMARU_dir/OMARU_databases` as follows. These databases will be installed in `OMARU_dir/OMARU_databases`. Activate the `OMARU` environment and then run:
-
+```bash
     # Download and prepare reference databases for read QC such as phix, adapters (in Trimmomatic), and human genome (hg38)
     Prepare_reference_read_QC.sh OMARU_dir/OMARU_databases
-    
-    # Download and prepare reference databases of phylogenetic analyses (based on ChocoPhlAn)
+```
+```bash
+    # Download and prepare reference databases of phylogenetic analyses (based on ChocoPhlAn) in a FASTA format.
     Prepare_reference_ChocoPhlAn.sh OMARU_dir/OMARU_databases
-    
-    # if 自分で用意する場合、下記のデータを用意する
-    　 # 1 ~~  各列はAに準ずる
-     
+   ```
+if you adopt your original reference data, the additional following data should be prepared in `OMARU_dir/OMARU_databases`.
+  1 `NCBI_species_scaffold_<phylogenetic_reference>.txt` (Refer to `NCBI_species_scaffold_EXAMPLE.txt`)
+  **Row**  One scaffold in FASTA files per row
+  **Column** 1.NCBI_Accession ID 2.Species 3.Scaffold
+  
+  2 `NCBI_lineage_<phylogenetic_reference>.txt` (Refer to `NCBI_lineage_EXAMPLE.txt`)
+  **Row**  One FASTA file per row
+  **Column** 1.NCBI_Accession ID 2~8.Kingdom ~ Species
+
+  3 `eachL_lineage_<phylogenetic_reference>.txt` (Refer to `eachL_lineage_EXAMPLE.txt`) 
+  **Row**  One clade per row
+  **Column** 1.Clade 2~8.Kingdom ~ Species
+
+
     
     # Download and prepare reference databases of functional analyses (based on UniRef90 and GO term)
     Prepare_reference_UniRef90.sh OMARU_dir/OMARU_databases
