@@ -44,7 +44,7 @@ To install OMARU via Conda, create a new environment using the following command
  
  Activate the `OMARU` environment and then run as follows.
 
-#### Download and prepare reference databases for read QC such as phix, adapters (in Trimmomatic), and human genome (hg38)
+- **Download and prepare reference databases for read QC such as phix, adapters (in Trimmomatic), and human genome (hg38)**
 ```bash
     Prepare_reference_read_QC.sh OMARU_dir/OMARU_databases
 ```
@@ -52,33 +52,45 @@ To install OMARU via Conda, create a new environment using the following command
 ```bash
     Prepare_reference_ChocoPhlAn.sh OMARU_dir/OMARU_databases
    ```
-if you adopt your original phylogenetic reference data, the additional following data should be prepared in `OMARU_dir/OMARU_databases`.
+if you adopt your original phylogenetic reference data, 
+- FASTA file should be converted to the format of bowtie reference.
+- The additional following data should be prepared in `OMARU_dir/OMARU_databases`.
 
 &nbsp; 1 `NCBI_species_scaffold_<phylogenetic_reference>.txt` (refer to `NCBI_species_scaffold_EXAMPLE.txt`)
 
-  &emsp;   **Row**           One scaffold in FASTA files per row
+&emsp; **Row** One scaffold in FASTA files per row
   
 &emsp; **Column** 1.NCBI_Accession ID 2.Species 3.Scaffold
   
-  
 &nbsp; 2 `NCBI_lineage_<phylogenetic_reference>.txt` (refer to `NCBI_lineage_EXAMPLE.txt`)　　
   
-&nbsp;   **Row**  One FASTA file per row
+&emsp; **Row**  One FASTA file per row
   
-&nbsp;   **Column** 1.NCBI_Accession ID 2~8.Kingdom ~ Species
-
+&emsp; **Column** 1.NCBI_Accession ID 2~8.Kingdom ~ Species
 
 &nbsp; 3 `eachL_lineage_<phylogenetic_reference>.txt` (refer to `eachL_lineage_EXAMPLE.txt`) 　　
 
-&nbsp;   **Row**  One clade per row
+&emsp; **Row**  One clade per row
 
-&nbsp;   **Column** 1.Clade 2~8.Kingdom ~ Species
+&nemp; **Column** 1.Clade 2~8.Kingdom ~ Species
 
 - **Download and prepare reference databases of functional analyses (based on UniRef90 and GO term)**
 ```bash
     Prepare_reference_UniRef90.sh OMARU_dir/OMARU_databases
-    ```
+```
+if you adopt your original functional reference data, the additional following data should be prepared in `OMARU_dir/OMARU_databases`.
 
+&nbsp; 1 `NCBI_species_scaffold_<phylogenetic_reference>.txt` (refer to `NCBI_species_scaffold_EXAMPLE.txt`)
+
+&emsp; **Row** One scaffold in FASTA files per row
+  
+&emsp; **Column** 1.NCBI_Accession ID 2.Species 3.Scaffold
+  
+&nbsp; 2 `NCBI_lineage_<phylogenetic_reference>.txt` (refer to `NCBI_lineage_EXAMPLE.txt`)　　
+  
+&emsp; **Row**  One FASTA file per row
+  
+&emsp; **Column** 1.NCBI_Accession ID 2~8.Kingdom ~ Species
 **Note**: This process can be time and resource intensive, taking several hours, ~108GB of free disk space, and ~40GB of RAM.
 
 By default, MetaLAFFA is able to interface with Sun Grid Engine (SGE) and HTCondor clusters. This is achieved via the use of Python job submission wrapper scripts, included in the `$CONDA_PREFIX/MetaLAFFA/src/` directory (`$CONDA_PREFIX/MetaLAFFA/src/sge_submission_wrapper.py` and `$CONDA_PREFIX/src/condor_submission_wrapper.py` respectively). If your cluster uses a different cluster management system, then you will need to create your own job submission wrapper by following these steps:
