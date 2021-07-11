@@ -44,12 +44,12 @@ To install OMARU via Conda, create a new environment using the following command
  
  Activate the `OMARU` environment and then run as follows.
 
- - **Download and prepare reference databases for read QC such as phix, adapters (in Trimmomatic), and human genome (hg38)**
+- **Download and prepare reference databases for read QC such as phix, adapters (in Trimmomatic), and human genome (hg38)**
 ```bash
     Prepare_reference_read_QC.sh OMARU_dir/OMARU_databases
 ```
+- **Download and prepare reference databases of phylogenetic analyses (based on ChocoPhlAn) in a FASTA format.**
 ```bash
-    # Download and prepare reference databases of phylogenetic analyses (based on ChocoPhlAn) in a FASTA format.
     Prepare_reference_ChocoPhlAn.sh OMARU_dir/OMARU_databases
    ```
 if you adopt your original phylogenetic reference data, the additional following data should be prepared in `OMARU_dir/OMARU_databases`.
@@ -74,10 +74,10 @@ if you adopt your original phylogenetic reference data, the additional following
   
   **Column** 1.Clade 2~8.Kingdom ~ Species
 
-
-    
-    # Download and prepare reference databases of functional analyses (based on UniRef90 and GO term)
+- **Download and prepare reference databases of functional analyses (based on UniRef90 and GO term)**
+```bash
     Prepare_reference_UniRef90.sh OMARU_dir/OMARU_databases
+    ```
 
 **Note**: This process can be time and resource intensive, taking several hours, ~108GB of free disk space, and ~40GB of RAM.
 
