@@ -38,11 +38,14 @@ To install OMARU via Conda, create a new environment using the following command
  
 ## Download of reference databases 
 
- Users can flexibly customize the reference data. 
+ Users can flexibly customize the reference data.
+ 
  Default reference databases can be downloaded and prepared for OMARU in `OMARU_dir/OMARU_databases`. 
- Activate the `OMARU` environment and then run:
+ 
+ Activate the `OMARU` environment and then run as follows.
+
+ ### - Download and prepare reference databases for read QC such as phix, adapters (in Trimmomatic), and human genome (hg38)
 ```bash
-    # Download and prepare reference databases for read QC such as phix, adapters (in Trimmomatic), and human genome (hg38)
     Prepare_reference_read_QC.sh OMARU_dir/OMARU_databases
 ```
 ```bash
@@ -51,21 +54,21 @@ To install OMARU via Conda, create a new environment using the following command
    ```
 if you adopt your original phylogenetic reference data, the additional following data should be prepared in `OMARU_dir/OMARU_databases`.
 
-  1 `NCBI_species_scaffold_<phylogenetic_reference>.txt` (Refer to `NCBI_species_scaffold_EXAMPLE.txt`)
+  1 `NCBI_species_scaffold_<phylogenetic_reference>.txt` (refer to `NCBI_species_scaffold_EXAMPLE.txt`)
   
   **Row**  One scaffold in FASTA files per row
   
   **Column** 1.NCBI_Accession ID 2.Species 3.Scaffold
   
   
-  2 `NCBI_lineage_<phylogenetic_reference>.txt` (Refer to `NCBI_lineage_EXAMPLE.txt`)　　
+  2 `NCBI_lineage_<phylogenetic_reference>.txt` (refer to `NCBI_lineage_EXAMPLE.txt`)　　
   
   **Row**  One FASTA file per row
   
   **Column** 1.NCBI_Accession ID 2~8.Kingdom ~ Species
 
 
-  3 `eachL_lineage_<phylogenetic_reference>.txt` (Refer to `eachL_lineage_EXAMPLE.txt`) 　　
+  3 `eachL_lineage_<phylogenetic_reference>.txt` (refer to `eachL_lineage_EXAMPLE.txt`) 　　
   
   **Row**  One clade per row
   
