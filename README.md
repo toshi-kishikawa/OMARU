@@ -126,7 +126,7 @@ Arrange some parameters of `OMARU_project_dir/config.yaml` that you may want to 
 |REF: PHYL|phylogenetic reference name|CHOCO|
 |REF: GENE|reference name of gene|UniRef90|
 |REF: PATH|reference name of pathway|GO|
-|PHYL_THRESHOLD|cutoff value for relative abundance rate of clades <br> 5 indicates 1 × 10^-5|5|
+|PHYL_THRESHOLD|cutoff value for relative abundance rate of clades <br> 5 indicates 1 × 10^{-5}|5|
 |SUFFIX_COV||\_woBMI|
 |N_PCs|list of the number of PCs evaluated in association test|[0,1,2,3]|
 |N_PC_PHYL|number of PC finally adopted in the phylogenetic association test|2|
