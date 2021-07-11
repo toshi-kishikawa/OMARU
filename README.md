@@ -52,46 +52,50 @@ To install OMARU via Conda, create a new environment using the following command
 ```bash
     $ Prepare_reference_ChocoPhlAn.sh OMARU_dir/OMARU_databases
    ```
-if you adopt your original phylogenetic reference data, 
-    - FASTA file should be converted to the format of bowtie reference.
-    - The additional following data should be prepared in `OMARU_dir/OMARU_databases`.
+if you adopt your original phylogenetic reference data, FASTA file should be converted to the format of bowtie reference, and the following data should be prepared in `OMARU_dir/OMARU_databases`.
 
 &nbsp; 1 `NCBI_species_scaffold_<phylogenetic_reference>.txt` (refer to `NCBI_species_scaffold_EXAMPLE.txt`)
 
 &emsp; **Row** One scaffold in FASTA files per row
   
-&emsp; **Column** 1.NCBI_Accession ID 2.Species 3.Scaffold
+&emsp; **Column** 1.NCBI Accession ID 2.Species 3.Scaffold
   
 &nbsp; 2 `NCBI_lineage_<phylogenetic_reference>.txt` (refer to `NCBI_lineage_EXAMPLE.txt`)　　
   
 &emsp; **Row**  One FASTA file per row
   
-&emsp; **Column** 1.NCBI_Accession ID 2~8.Kingdom ~ Species
+&emsp; **Column** 1.NCBI Accession ID 2~8.Kingdom ~ Species
 
 &nbsp; 3 `eachL_lineage_<phylogenetic_reference>.txt` (refer to `eachL_lineage_EXAMPLE.txt`) 　　
 
 &emsp; **Row**  One clade per row
 
-&nemp; **Column** 1.Clade 2~8.Kingdom ~ Species
+&emsp; **Column** 1.Clade 2~8.Kingdom ~ Species
 
 - **Download and prepare reference databases of functional analyses (based on UniRef90 and GO term)**
 ```bash
     $ Prepare_reference_UniRef90.sh OMARU_dir/OMARU_databases
 ```
-if you adopt your original functional reference data, the additional following data should be prepared in `OMARU_dir/OMARU_databases`.
+if you adopt your original functional reference data, FASTA file should be converted to the format of bowtie reference, and the additional following data should be prepared in `OMARU_dir/OMARU_databases`.
 
-&nbsp; 1 `NCBI_species_scaffold_<phylogenetic_reference>.txt` (refer to `NCBI_species_scaffold_EXAMPLE.txt`)
+&nbsp; 1 `<gene_reference>_annotatioin.txt.gz` (refer to `EXAMPLE_gene_annotation.txt`)
 
-&emsp; **Row** One scaffold in FASTA files per row
+&emsp; **Row** One gene per row
   
-&emsp; **Column** 1.NCBI_Accession ID 2.Species 3.Scaffold
+&emsp; **Column** 1.Gene ID 2~. Metadata of gene
   
-&nbsp; 2 `NCBI_lineage_<phylogenetic_reference>.txt` (refer to `NCBI_lineage_EXAMPLE.txt`)　　
+&nbsp; 2 `header_<gene_reference>_annotatioin.txt` (refer to `header_EXAMPLE_gene_annotation.txt`)
   
-&emsp; **Row**  One FASTA file per row
+&nbsp; 3 `<pathway_reference>_annotatioin.txt.gz` (refer to `EXAMPLE_pathway_annotation.txt`)
+
+&emsp; **Row** One pathway per row
   
-&emsp; **Column** 1.NCBI_Accession ID 2~8.Kingdom ~ Species
-**Note**: This process can be time and resource intensive, taking several hours, ~108GB of free disk space, and ~40GB of RAM.
+&emsp; **Column** 1.pathway ID 2~. Metadata of pathway
+  
+&nbsp; 2 `header_<pathway_reference>_annotatioin.txt` (refer to `header_EXAMPLE_pathway_annotation.txt`)
+
+
+**Note**: This process can be time and resource intensive, taking several hours, almost 200GB of free disk space.
 
 By default, MetaLAFFA is able to interface with Sun Grid Engine (SGE) and HTCondor clusters. This is achieved via the use of Python job submission wrapper scripts, included in the `$CONDA_PREFIX/MetaLAFFA/src/` directory (`$CONDA_PREFIX/MetaLAFFA/src/sge_submission_wrapper.py` and `$CONDA_PREFIX/src/condor_submission_wrapper.py` respectively). If your cluster uses a different cluster management system, then you will need to create your own job submission wrapper by following these steps:
 
@@ -142,9 +146,11 @@ This option will use the submission wrapper and jobscript specified in your proj
 ```
 
 #### output
-You can check tables and figures of the statistical summary in the QC process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
+You can find QCed FASTQ files in the output directory, `OMARU_project_dir/result/<Phenotype>_summary`
 
-Select the samples that has passed QC, and update the sample list with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data`. 
+You can also check tables and figures of the statistical summary in the QC process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
+
+For the next step, <u>select the samples that has passed QC</u>, and <u>update the sample list</u> with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data` . 
 
 
 ### Step 2: Construct phylogenetic and functional profiling
@@ -155,6 +161,7 @@ Select the samples that has passed QC, and update the sample list with the name 
 ```
 
 #### output
+
 As in the previous step, you can check tables and figures of the statistical summary in the profiling process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
 
 Select the samples with sufficient quality in the profiling process, and update the sample list with the name `QCed2_sample_list.txt` at `OMARU_project_dir/data`. 
