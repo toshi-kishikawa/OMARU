@@ -49,6 +49,7 @@ To install OMARU via Conda, create a new environment using the following command
     $ Prepare_reference_read_QC.sh OMARU_dir/OMARU_databases
 ```
 - **Download and prepare reference databases of phylogenetic analyses (based on ChocoPhlAn) in a FASTA format.**
+    - dou 
 ```bash
     $ Prepare_reference_ChocoPhlAn.sh OMARU_dir/OMARU_databases
    ```
