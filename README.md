@@ -119,9 +119,9 @@ Put your sample list with metadata to predetermined folder (`OMARU_project_dir/d
 Arrange some parameters of `OMARU_project_dir/config.yaml` that you may want to change. 
 | Parameter | Description | Default |
 |:-----------:|:-----------:|:------------|
-|1|CHR|Chromosome|
-|2|SNP|rsID|
-|3|BP|BP position|
+|PHENOTYPE|one word of your project such as phenotype|project_phenotype|
+|DB_DIR|absolute pathname of your database directory|/OAMRU/OMARU_databases|
+|THREAD|number of threads used by each shell script|4|
 |4|A1|Effect allele|
 |5|A2|Other allele|
 |6|MAF|Minor allele frequency (*optional*)|
