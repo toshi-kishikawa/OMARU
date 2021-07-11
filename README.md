@@ -54,25 +54,25 @@ To install OMARU via Conda, create a new environment using the following command
    ```
 if you adopt your original phylogenetic reference data, the additional following data should be prepared in `OMARU_dir/OMARU_databases`.
 
-    1 `NCBI_species_scaffold_<phylogenetic_reference>.txt` (refer to `NCBI_species_scaffold_EXAMPLE.txt`)
+&nbsp; 1 `NCBI_species_scaffold_<phylogenetic_reference>.txt` (refer to `NCBI_species_scaffold_EXAMPLE.txt`)
 
-&nbsp; **Row**  One scaffold in FASTA files per row
+&nbsp; 　　**Row**  One scaffold in FASTA files per row
   
 &nbsp; 　　**Column** 1.NCBI_Accession ID 2.Species 3.Scaffold
   
   
-  2 `NCBI_lineage_<phylogenetic_reference>.txt` (refer to `NCBI_lineage_EXAMPLE.txt`)　　
+&nbsp; 2 `NCBI_lineage_<phylogenetic_reference>.txt` (refer to `NCBI_lineage_EXAMPLE.txt`)　　
   
-  **Row**  One FASTA file per row
+&nbsp; 　　**Row**  One FASTA file per row
   
-  **Column** 1.NCBI_Accession ID 2~8.Kingdom ~ Species
+&nbsp; 　  **Column** 1.NCBI_Accession ID 2~8.Kingdom ~ Species
 
 
-  3 `eachL_lineage_<phylogenetic_reference>.txt` (refer to `eachL_lineage_EXAMPLE.txt`) 　　
-  
-  **Row**  One clade per row
-  
-  **Column** 1.Clade 2~8.Kingdom ~ Species
+&nbsp; 3 `eachL_lineage_<phylogenetic_reference>.txt` (refer to `eachL_lineage_EXAMPLE.txt`) 　　
+
+&nbsp;　　  **Row**  One clade per row
+
+&nbsp; 　　 **Column** 1.Clade 2~8.Kingdom ~ Species
 
 - **Download and prepare reference databases of functional analyses (based on UniRef90 and GO term)**
 ```bash
