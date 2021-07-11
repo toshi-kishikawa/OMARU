@@ -163,7 +163,7 @@ You can find QCed FASTQ files in the output directory, `OMARU_project_dir/result
 
 You can also check tables and figures of the statistical summary in the QC process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
 
-For the next step, <ins>select the samples that has passed QC</ins>, and <ins>update the sample list</iins> with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data` . 
+For the next step, <ins>select the samples that has passed QC</ins>, and <ins>update the sample list</ins> with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data` . 
 
 
 ### Step 2: Construct phylogenetic and functional profiling
@@ -190,7 +190,7 @@ For the next step, <ins>select the samples with sufficient quality in the profil
 #### output
 You can check tables and figures of the statistical summary of the abundance data at the output directory, `OMARU_project_dir/result/PHYL_QCed2/<Phylogenetic_reference>_graph_basic` and `OMARU_project_dir/result/PHYL_QCed2/<Gene_reference>_graph_basic`.
 
-Select the samples with appropriate profiling data for analysis, and update the sample list with the name `QCed3_sample_list.txt` at `OMARU_project_dir/data`. 
+For the next step, <ins>select the samples with appropriate profiling data for analysis</ins>, and <ins>update the sample list</ins> with the name `QCed3_sample_list.txt` at `OMARU_project_dir/data`. 
 
 ### Step 4-1: Case-control association test for phylogenetic abundance data
 
