@@ -127,7 +127,7 @@ Arrange some parameters of `OMARU_project_dir/config.yaml` that you may want to 
 |REF: GENE|reference name of gene|UniRef90|
 |REF: PATH|reference name of pathway|GO|
 |PHYL_THRESHOLD|cutoff value for relative abundance rate of clades <br> 5 indicates 1 × 10<sup>-5</sup>|5|
-|SUFFIX_COV||\_woBMI|
+|SUFFIX_COV|suffixes for list file of covariates in association tests <br> See details in `Step 2`|\_wBMI|
 |N_PCs|list of the number of PCs evaluated in association test|[0,1,2,3]|
 |N_PC_PHYL|number of PC finally adopted in the phylogenetic association test|2|
 |N_PC_GENE|number of PC finally adopted in the gene association test|2|
