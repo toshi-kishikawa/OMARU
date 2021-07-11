@@ -27,10 +27,7 @@ OMARU requires [**Conda**](https://docs.conda.io/projects/conda/en/latest/user-g
 To install OMARU via Conda, create a new environment using the following command:
 
 ```bash
-    # Download conda-pack of OMARU.
-    conda create -n metalaffa metalaffa -c bioconda -c borenstein-lab
-   
-   # Unpack environment into directory <OMARU_dir>
+    # Download conda-pack of OMARU into directory <OMARU_dir>
     mkdir -p OMARU_dir
     git clone https://github.com/toshi-kishikawa/OMARU
     tar -xzf OMARU.tar.gz -C OMARU_dir
