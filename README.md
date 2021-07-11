@@ -159,11 +159,11 @@ various options can be used according to Snakemake such as:
 ```
 
 #### output
-You can find QCed FASTQ files in the output directory, `OMARU_project_dir/result/<Phenotype>_summary`
+You can find QCed FASTQ files in the output directory, `OMARU_project_dir/result/QC/QCed_fastq`
 
 You can also check tables and figures of the statistical summary in the QC process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
 
-For the next step, <ins>select the samples that has passed QC</ins>, and <u>update the sample list</u> with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data` . 
+For the next step, <ins>select the samples that has passed QC</ins>, and <ins>update the sample list</iins> with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data` . 
 
 
 ### Step 2: Construct phylogenetic and functional profiling
@@ -175,9 +175,10 @@ For the next step, <ins>select the samples that has passed QC</ins>, and <u>upda
 
 #### output
 
+You can find QCed FASTQ files in the output directory, `OMARU_project_dir/result/QC/QCed_fastq`
 As in the previous step, you can check tables and figures of the statistical summary in the profiling process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
 
-Select the samples with sufficient quality in the profiling process, and update the sample list with the name `QCed2_sample_list.txt` at `OMARU_project_dir/data`. 
+For the next step, <ins>select the samples with sufficient quality in the profiling process</ins>, and <ins>update the sample list</ins> with the name `QCed2_sample_list.txt` at `OMARU_project_dir/data`. 
 
 ### Step 3: Check the phylogenetic and gene abundance data
 
