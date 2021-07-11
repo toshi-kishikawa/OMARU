@@ -117,26 +117,33 @@ Put your sample list with metadata to predetermined folder (`OMARU_project_dir/d
 **Column** The first three columns are sample ID, gender, age, and other metadata from the fourth column onwards.
 
 Arrange some parameters of `OMARU_project_dir/config.yaml` that you may want to change. 
-
+| Parameter | Description | Default |
+|:-----------:|:-----------:|:------------|
+|1|CHR|Chromosome|
+|2|SNP|rsID|
+|3|BP|BP position|
+|4|A1|Effect allele|
+|5|A2|Other allele|
+|6|MAF|Minor allele frequency (*optional*)|
+|7|N|#Samples|
+|8|BETA|Beta (effect allele)|
+|9|P|P-value|
 
 ## Usage
 
-Snakemakeに準じた様々なオプションが使える。
-このページを参照にしてください。 http://
-下記にいくつか例を挙げる
-If you are running MetaLAFFA locally, use:
+various options can be used according to Snakemake such as:
 
-    ./MetaLAFFA.py
-
-If you are running MetaLAFFA on a cluster, use:
-
-    ./MetaLAFFA.py --use-cluster
-
--n
--j
+    #If you are running MetaLAFFA on a cluster, use:
+    ./OMARU.py --cluster
+-
+-
+-
+-
+-
+-
 
 
-This option will use the submission wrapper and jobscript specified in your project's `config/cluster.py` configuration submodule to submit jobs to your cluster system.
+
 
 ### Step 1: Read QC
 
