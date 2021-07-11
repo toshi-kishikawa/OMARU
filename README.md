@@ -56,9 +56,9 @@ if you adopt your original phylogenetic reference data, the additional following
 
     1 `NCBI_species_scaffold_<phylogenetic_reference>.txt` (refer to `NCBI_species_scaffold_EXAMPLE.txt`)
 
-  **Row**  One scaffold in FASTA files per row
+&nbsp; **Row**  One scaffold in FASTA files per row
   
-  **Column** 1.NCBI_Accession ID 2.Species 3.Scaffold
+&nbsp; 　　**Column** 1.NCBI_Accession ID 2.Species 3.Scaffold
   
   
   2 `NCBI_lineage_<phylogenetic_reference>.txt` (refer to `NCBI_lineage_EXAMPLE.txt`)　　
