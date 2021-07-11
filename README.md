@@ -150,7 +150,7 @@ You can find QCed FASTQ files in the output directory, `OMARU_project_dir/result
 
 You can also check tables and figures of the statistical summary in the QC process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
 
-For the next step, <u>select the samples that has passed QC</u>, and <u>update the sample list</u> with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data` . 
+For the next step, <ins>select the samples that has passed QC</ins>, and <u>update the sample list</u> with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data` . 
 
 
 ### Step 2: Construct phylogenetic and functional profiling
