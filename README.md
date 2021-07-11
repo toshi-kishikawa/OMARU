@@ -38,7 +38,9 @@ To install OMARU via Conda, create a new environment using the following command
  
 ## Download of reference databases 
 
- Users can flexibly customize the reference data. Default reference databases can be downloaded and prepared for OMARU using scripts in `OMARU_dir/OMARU_databases` as follows. These databases will be installed in `OMARU_dir/OMARU_databases`. Activate the `OMARU` environment and then run:
+ Users can flexibly customize the reference data. 
+ Default reference databases can be downloaded and prepared for OMARU in `OMARU_dir/OMARU_databases`. 
+ Activate the `OMARU` environment and then run:
 ```bash
     # Download and prepare reference databases for read QC such as phix, adapters (in Trimmomatic), and human genome (hg38)
     Prepare_reference_read_QC.sh OMARU_dir/OMARU_databases
@@ -47,7 +49,8 @@ To install OMARU via Conda, create a new environment using the following command
     # Download and prepare reference databases of phylogenetic analyses (based on ChocoPhlAn) in a FASTA format.
     Prepare_reference_ChocoPhlAn.sh OMARU_dir/OMARU_databases
    ```
-if you adopt your original reference data, the additional following data should be prepared in `OMARU_dir/OMARU_databases`.
+if you adopt your original phylogenetic reference data, the additional following data should be prepared in `OMARU_dir/OMARU_databases`.
+
   1 `NCBI_species_scaffold_<phylogenetic_reference>.txt` (Refer to `NCBI_species_scaffold_EXAMPLE.txt`)
   **Row**  One scaffold in FASTA files per row
   **Column** 1.NCBI_Accession ID 2.Species 3.Scaffold
