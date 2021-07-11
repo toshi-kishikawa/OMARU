@@ -51,16 +51,24 @@ To install OMARU via Conda, create a new environment using the following command
    ```
 if you adopt your original phylogenetic reference data, the additional following data should be prepared in `OMARU_dir/OMARU_databases`.
 
-  1 `NCBI_species_scaffold_<phylogenetic_reference>.txt` (Refer to `NCBI_species_scaffold_EXAMPLE.txt`)　　
+  1 `NCBI_species_scaffold_<phylogenetic_reference>.txt` (Refer to `NCBI_species_scaffold_EXAMPLE.txt`)
+  
   **Row**  One scaffold in FASTA files per row
+  
   **Column** 1.NCBI_Accession ID 2.Species 3.Scaffold
   
+  
   2 `NCBI_lineage_<phylogenetic_reference>.txt` (Refer to `NCBI_lineage_EXAMPLE.txt`)　　
+  
   **Row**  One FASTA file per row
+  
   **Column** 1.NCBI_Accession ID 2~8.Kingdom ~ Species
 
+
   3 `eachL_lineage_<phylogenetic_reference>.txt` (Refer to `eachL_lineage_EXAMPLE.txt`) 　　
+  
   **Row**  One clade per row
+  
   **Column** 1.Clade 2~8.Kingdom ~ Species
 
 
