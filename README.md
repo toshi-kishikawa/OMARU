@@ -44,7 +44,7 @@ To install OMARU via Conda, create a new environment using the following command
  
  Activate the `OMARU` environment and then run as follows.
 
- ### - Download and prepare reference databases for read QC such as phix, adapters (in Trimmomatic), and human genome (hg38)
+ - **Download and prepare reference databases for read QC such as phix, adapters (in Trimmomatic), and human genome (hg38)**
 ```bash
     Prepare_reference_read_QC.sh OMARU_dir/OMARU_databases
 ```
