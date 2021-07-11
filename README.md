@@ -118,16 +118,22 @@ Put your sample list with metadata to predetermined folder (`OMARU_project_dir/d
 
 Arrange some parameters of `OMARU_project_dir/config.yaml` that you may want to change. 
 | Parameter | Description | Default |
-|:-----------:|:-----------:|:------------|
+|:-----------:|:-----------|:------------|
 |PHENOTYPE|one word of your project such as phenotype|project_phenotype|
 |DB_DIR|absolute pathname of your database directory|/OAMRU/OMARU_databases|
 |THREAD|number of threads used by each shell script|4|
-|4|A1|Effect allele|
-|5|A2|Other allele|
-|6|MAF|Minor allele frequency (*optional*)|
-|7|N|#Samples|
-|8|BETA|Beta (effect allele)|
-|9|P|P-value|
+|REF: HUMAN|reference name of human genome|Homo_sapiens_assembly38|
+|REF: PHYL|phylogenetic reference name|CHOCO|
+|REF: GENE|reference name of gene|UniRef90|
+|REF: PATH|reference name of pathway|GO|
+|PHYL_THRESHOLD|cutoff value for relative abundance rate of clades <br> 5 indicates 1 × 10^-5|5|
+|SUFFIX_COV||\_woBMI|
+|N_PCs|list of the number of PCs evaluated in association test|[0,1,2,3]|
+|N_PC_PHYL|number of PC finally adopted in the phylogenetic association test|2|
+|N_PC_GENE|number of PC finally adopted in the gene association test|2|
+|PQ|P|0.05|
+|N_SIG_CLADE|P|0.05|
+|TARGETS|P|0.05|
 
 ## Usage
 
