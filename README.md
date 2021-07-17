@@ -212,19 +212,18 @@ When you change the list of numbers of PCs used as covariates, for example to tr
 You can find summary statistics of result of phylogenetic association tests with the name `sumstats_*.txt` at  `result/PHYL_QCed3/<Phylogenetic_reference>_association_test/<covariates>`. Also, figures at `result/PHYL_QCed3/<Phylogenetic_reference>_association_graph`.
 
 For the next step, <ins>select the number of PCs to be adopted as covariates</ins>, and <ins>change the parameter of `N_PCs` in `<OMARU_project_dir>/config.yaml`. 
+  
 
-### Step 4-2: Phenotype permutation and visualization of the result in phylogetic association test
-
+### Step 4-2: Phenotype permutation and visualization of the result in the phylogetic association tests
 
 ```bash
     cd OMARU_project_dir
-    snakemake -s OMARU_read_QC.sm 
+    snakemake -s OMARU_Phyl_permutation_visualization.sm 
 ```
 
 #### output
-You can check tables and figures of the statistical summary in the QC process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
-
-Select the samples that has passed QC, and update the sample list with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data`. 
+You can find summary statistics that integrate permutation results and annotation information with the name `sumstats_*_annot.txt` at  `result/PHYL_QCed3/<Phylogenetic_reference>_association_test/<covariates>`. Also, figures at `result/PHYL_QCed3/<Phylogenetic_reference>_association_graph`.
+A phylogenetic tree indicating the case-control association results is at `result/PHYL_QCed3/<Phylogenetic_reference>_ggtree/<covariates>`
 
 ### Step 5-1: Case-control association test for gene abundance data
 
