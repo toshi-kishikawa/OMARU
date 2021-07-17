@@ -131,9 +131,9 @@ Arrange some parameters of `OMARU_project_dir/config.yaml` that you may want to 
 |N_PCs|list of the number of PCs evaluated in association test|[0,1,2,3]|
 |N_PC_PHYL|number of PC finally adopted in the phylogenetic association test|2|
 |N_PC_GENE|number of PC finally adopted in the gene association test|2|
-|PQ|P|0.05|
-|N_SIG_CLADE|P|0.05|
-|TARGETS|P|0.05|
+|PQ|threshold of p-value and false discovery rate|0.05|
+|N_SIG_CLADE|number of clades with significant differences in the phylogenetic association test|2|
+|TARGETS|genes to be evaluated for link with phylogenetic data|[\"XXX\",\"YYY\"]|
 
 ## Usage
 
