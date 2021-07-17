@@ -223,7 +223,8 @@ For the next step, <ins>select the number of PCs to be adopted as covariates</in
 
 #### output
 You can find summary statistics that integrate permutation results and annotation information with the name `sumstats_*_annot.txt` at  `result/PHYL_QCed3/<Phylogenetic_reference>_association_test/<covariates>`. Also, figures at `result/PHYL_QCed3/<Phylogenetic_reference>_association_graph`.
-A phylogenetic tree indicating the case-control association results is at `result/PHYL_QCed3/<Phylogenetic_reference>_ggtree/<covariates>`
+
+  A phylogenetic tree indicating the association results is at `result/PHYL_QCed3/<Phylogenetic_reference>_ggtree/<covariates>`
 
 ### Step 5-1: Case-control association test for gene abundance data
 
