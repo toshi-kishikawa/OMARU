@@ -145,7 +145,7 @@ various options can be used according to Snakemake such as:
     # run OMARU locally:
     snakemake -s script/OMARU.sm --jobs 10
     
-    # perform a dry-run locally
+    # perform a dry-run locally:
     snakemake -s script/OMARU.sm --jobs 10 -n
 
     # run OMARU on a cluster:
@@ -211,7 +211,7 @@ When you change the list of numbers of PCs used as covariates, for example to tr
 #### output
 You can find summary statistics of result of phylogenetic association tests with the name `sumstats_*.txt` at  `result/PHYL_QCed3/<Phylogenetic_reference>_association_test/<covariates>`. Also, figures at `result/PHYL_QCed3/<Phylogenetic_reference>_association_graph`.
 
-For the next step, <ins>select the number of PCs to be adopted as covariates</ins>, and <ins>change the parameter of `N_PCs` in `<OMARU_project_dir>/config.yaml`. 
+For the next step, <ins>select the number of PCs to be adopted as covariates</ins>, and <ins>change the parameter of `N_PC_PHYL` in `<OMARU_project_dir>/config.yaml`. 
   
 
 ### Step 4-2: Phenotype permutation and visualization of the result in the phylogetic association tests
@@ -227,70 +227,49 @@ You can find summary statistics that integrate permutation results and annotatio
   A phylogenetic tree indicating the association results is at `result/PHYL_QCed3/<Phylogenetic_reference>_ggtree/<covariates>`
 
 ### Step 5-1: Case-control association test for gene abundance data
+ 
+You can customize the parameter of `SUFFIX_COV` and `N_PCs` in `<OMARU_project_dir>/config.yaml` 
+
+When you change the list of numbers of PCs used as covariates, for example to try a range of four PCs to seven PCs, change the parameter of `N_PCs` as in `Step 4-1`.
+  
+```bash
+    cd OMARU_project_dir
+    snakemake -s OMARU_Func_AS.sm 
+```
+#### output
+You can find summary statistics of result of gene association tests with the name `sumstats_*.txt` at  `result/FUNC_QCed3/<Gene_reference>_association_test/<covariates>`. Also, figures at `result/FUNC_QCed3/<Gene_reference>_association_graph`.
+
+For the next step, <ins>select the number of PCs to be adopted as covariates</ins>, and <ins>change the parameter of `N_PC_FUNC` in `<OMARU_project_dir>/config.yaml`. 
+
+### Step 5-2: Phenotype permutation in gene association tests
 
 ```bash
     cd OMARU_project_dir
-    snakemake -s OMARU_read_QC.sm 
+    snakemake -s OMARU_Func_permutation.sm 
+```
+
+#### output
+You can find summary statistics that integrate permutation results and annotation information with the name `sumstats_*_annot.txt` at  `result/FUNC_QCed3/<Gene_reference>_association_test/<covariates>`. Also, figures at `result/FUNC_QCed3/<Gene_reference>_association_graph`
+  
+  
+### Step 5-3: Gene set enrichment analysis using the ranking of the genes
+
+```bash
+    cd OMARU_project_dir
+    snakemake -s OMARU_FUNC_GSEA.sm 
 ```
 
 #### output
 You can check tables and figures of the statistical summary in the QC process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
 
 Select the samples that has passed QC, and update the sample list with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data`. 
+  
 
-### Step 5-2: Phenotype permutation in gene association test
-
-```bash
-    cd OMARU_project_dir
-    snakemake -s OMARU_read_QC.sm 
-```
-
-#### output
-You can check tables and figures of the statistical summary in the QC process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
-
-Select the samples that has passed QC, and update the sample list with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data`. 
-
-### Step 5-2: Phenotype permutation in gene analysis
+### Step 5-4: Links between the microbe MWAS and the germline GWAS of host
 
 ```bash
     cd OMARU_project_dir
-    snakemake -s OMARU_read_QC.sm 
-```
-
-#### output
-You can check tables and figures of the statistical summary in the QC process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
-
-Select the samples that has passed QC, and update the sample list with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data`. 
-
-### Step 5-3: Gene set enrichment analysis
-
-```bash
-    cd OMARU_project_dir
-    snakemake -s OMARU_read_QC.sm 
-```
-
-#### output
-You can check tables and figures of the statistical summary in the QC process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
-
-Select the samples that has passed QC, and update the sample list with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data`. 
-
-### Step 5-4: Comparison of the pathway analysis results between the MWAS and the GWAS
-
-```bash
-    cd OMARU_project_dir
-    snakemake -s OMARU_read_QC.sm 
-```
-
-#### output
-You can check tables and figures of the statistical summary in the QC process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
-
-Select the samples that has passed QC, and update the sample list with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data`. 
-
-### Step 6: Link of phylogenetic and gene abundance data
-
-```bash
-    cd OMARU_project_dir
-    snakemake -s OMARU_read_QC.sm 
+    snakemake -s OMARU_Func_MWAS_GWAS.sm 
 ```
 
 #### output
@@ -299,58 +278,24 @@ You can check tables and figures of the statistical summary in the QC process at
 Select the samples that has passed QC, and update the sample list with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data`. 
 
 
-
-
-
-
-
-
-
-Note: Any configuration changes made in the configuration module located at $CONDA_PREFIX/MetaLAFFA/config will be the default configurations for any newly created projects. Thus, if you have custom settings that you think should be preset in any new projects, you should make those changes to this base configuration module.
-
-1) If you input ICD-10 code (for example, F20 for Schizophrenia as below), you will also get gold-standard drug (approved drugs for ICD-10 F20 in ChEMBL and TTD [Therapeutic Target Database]) in an output Q-Q plot data.
-ICD-10 codes which are not listed in ChEMBL and TTD are not applicable.
-The example command is as follows;
-```bash
-cd ./script
-./Trans-Phar.sh F20
-```
-
-or 2) If you need not get gold-standard Q-Q plot, you only enter the example command as follows;
-```bash
-cd ./script
-./Trans-Phar.sh
-```
-
-### Step 2: Put your input data to predetermined folder (named as Input_GWASsummary)
-## Output
-
-1) The example TWAS result outputs are as follows (if you use tutorial GWAS data);
+### Step 6: Links between taxa and genes in the metagenome.
 
 ```bash
-#TWAS results according to each 29 GTEx (v7) tissue and combined files from all 29 tissues at Output/Schizo/TWASresults.
-
-#For Example
-cd ../Output/Schizo/TWASresults/ALLTISSUE
-less GTEx_Adipose_Subcutaneous.chr_all.focus_shaped.tsv #TWAS result file (shaped), file format is described in https://github.com/bogdanlab/focus/wiki/Fine-mapping-TWAS-associations
-#TWAS result png files are also in Output/Schizo/TWASresults/ALLTISSUE
+    cd OMARU_project_dir
+    snakemake -s OMARU_Phy_Fun_link.sm 
 ```
 
-2) The example Spearman result outputs are as follows (if you use tutorial GWAS data);
+#### output
+You can check tables and figures of the statistical summary in the QC process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
 
-```bash
-#Output p-values for Negative Spearmans's correlation tests according to total 308,872 pairs of TWAS tissue - CMap cell - Compunds
-#Data of TWAS tissue - CMap cell - Compunds whose P-value < 0.0001 are in Output/Schizo/Spearmanresults/spearman_eachpair_results and Output/Schizo/Spearmanresults/spearman_eachpair_coplots
-#For Example
-cd ../../Spearmanresults/spearman_totalresults
-less ALLpairs_spearmanresults.txt
-#Q-Q plot for distribution of these P-value is also in Output/Schizo/Spearmanresults/spearman_totalresults
-```
+Select the samples that has passed QC, and update the sample list with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data`. 
 
-## Acknowledgements
-* The original [FOCUS](https://github.com/bogdanlab/focus) was written by Nicholas Mancuso et al.
 
 ## Licence
 This software is freely available for academic users. Usage for commercial purposes is not allowed.
 Please refer to the [LICENCE](https://github.com/konumat/Trans-Phar/blob/master/LICENSE.md/LICENSE.md) page.
+
+## Contact
+
+Toshihiro Kishikawa ([tkishikawa@ent.med.osaka-u.ac.jp](mailto:tkishikawa@ent.med.osaka-u.ac.jp))
 
