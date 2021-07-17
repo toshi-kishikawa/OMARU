@@ -110,9 +110,15 @@ Put your sample list with metadata to predetermined folder (`<OMARU_project_dir>
 
 **Name** `original_sample_list.txt`
 
-**Row**  One sample per row
+**Row**  The first row is header. One sample per row from the second row onwards.
 
 **Column** The first three columns are sample ID, gender, age, and other metadata from the fourth column onwards.
+
+Put covarite list for phylogenetic and gene association tests at `<OMARU_project_dir>/data` according to the following format:
+
+**Name** `covariates.txt`
+
+**Row**  One covariate per row. (Each word should be the same as the word of the header of `original_sample_list.txt`)
 
 Arrange some parameters of `<OMARU_project_dir>/config.yaml` that you may want to change. 
 | Parameter | Description | Default |
@@ -125,8 +131,8 @@ Arrange some parameters of `<OMARU_project_dir>/config.yaml` that you may want t
 |REF: GENE|reference name of gene|UniRef90|
 |REF: PATH|reference name of pathway|GO|
 |PHYL_THRESHOLD|cutoff value for relative abundance rate of clades <br> 5 indicates 1 × 10<sup>-5</sup>|5|
-|SUFFIX_COV|suffixes for list file of covariates in association tests <br> See details in `Step 2`|\_wBMI|
-|N_PCs|list of the number of PCs evaluated in association test|[0,1,2,3]|
+|SUFFIX_COV|suffixes for list file of covariates in association tests <br> See details in `Step 4-1`|\_wBMI|
+|N_PCs|list of numbers of PCs as covariates to be tried in association test <br> See details in `Step 4-1`|[0,1,2,3]|
 |N_PC_PHYL|number of PC finally adopted in the phylogenetic association test|2|
 |N_PC_GENE|number of PC finally adopted in the gene association test|2|
 |PQ|threshold of p-value and false discovery rate|0.05|
@@ -134,7 +140,6 @@ Arrange some parameters of `<OMARU_project_dir>/config.yaml` that you may want t
 |TARGETS|genes to be evaluated for link with phylogenetic data|[\"XXX\",\"YYY\"]|
 
 ## Usage
-
 various options can be used according to Snakemake such as:
 
     # run OMARU locally:
@@ -169,11 +174,10 @@ For the next step, <ins>select the samples that has passed QC</ins>, and <ins>up
 
 ```bash
     cd OMARU_project_dir
-    snakemake -s <OMARU>.sm 
+    snakemake -s OMARU_QCed1.sm 
 ```
 
 #### output
-
 You can find QCed FASTQ files in the output directory, `<OMARU_project_dir>/result/QC/QCed_fastq`
 As in the previous step, you can check tables and figures of the statistical summary in the profiling process at the output directory, `<OMARU_project_dir>/result/<Phenotype>_summary`.
 
@@ -187,11 +191,17 @@ For the next step, <ins>select the samples with sufficient quality in the profil
 ```
 
 #### output
+
 You can check tables and figures of the statistical summary of the abundance data at the output directory, `<OMARU_project_dir>/result/PHYL_QCed2/<Phylogenetic_reference>_graph_basic` and `<OMARU_project_dir>/result/PHYL_QCed2/<Gene_reference>_graph_basic`.
 
 For the next step, <ins>select the samples with appropriate profiling data for analysis</ins>, and <ins>update the sample list</ins> with the name `QCed3_sample_list.txt` at `<OMARU_project_dir>/data`. 
 
 ### Step 4-1: Case-control association test for phylogenetic abundance data
+
+You can customize the metadata used as covariates from the default, `covariates.txt` at `<OMARU_project_dir>/data/`. Make new list of covariates with the name `covariates<SUFFIX_COV>.txt` and change the parameter of `SUFFIX_COV` in `<OMARU_project_dir>/config.yaml`
+
+When you change the list of numbers of PCs used as covariates, for example to try a range of four PCs to seven PCs, change the parameter of `N_PCs` in `<OMARU_project_dir>/config.yaml` to [4,5,6,7].
+
 
 ```bash
     cd OMARU_project_dir
@@ -199,9 +209,9 @@ For the next step, <ins>select the samples with appropriate profiling data for a
 ```
 
 #### output
-You can check tables and figures of the statistical summary in the QC process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
+You can find summary statistics of result of phylogenetic association tests with the name `sumstats_*.txt` at  `result/PHYL_QCed3/<Phylogenetic_reference>_association_test/<covariates>`. Also, figures at `result/PHYL_QCed3/<Phylogenetic_reference>_association_graph`.
 
- 
+For the next step, <ins>select the number of PCs to be adopted as covariates</ins>, and <ins>change the parameter of `N_PCs` in `<OMARU_project_dir>/config.yaml`. 
 
 ### Step 4-2: Phenotype permutation and visualization of the result in phylogetic association test
 
