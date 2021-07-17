@@ -40,7 +40,7 @@ To install OMARU via Conda, create a new environment using the following command
 
  Users can flexibly customize the reference data.
  
- Default reference databases can be downloaded and prepared for OMARU in `OMARU_dir/OMARU_databases`. 
+ Default reference databases can be downloaded and prepared for OMARU in `<OMARU_dir>/OMARU_databases`. 
  
  Activate the `OMARU` environment and then run as follows.
 
@@ -52,7 +52,7 @@ To install OMARU via Conda, create a new environment using the following command
 ```bash
     $ Prepare_reference_ChocoPhlAn.sh OMARU_dir/OMARU_databases
    ```
-if you adopt your original phylogenetic reference data, FASTA file should be converted to the format of bowtie reference, and the following data should be prepared in `OMARU_dir/OMARU_databases`.
+if you adopt your original phylogenetic reference data, FASTA file should be converted to the format of bowtie reference, and the following data should be prepared in `<OMARU_dir>/OMARU_databases`.
 
 &nbsp; 1 `NCBI_species_scaffold_<phylogenetic_reference>.txt` (refer to `NCBI_species_scaffold_EXAMPLE.txt`)
 
@@ -76,7 +76,7 @@ if you adopt your original phylogenetic reference data, FASTA file should be con
 ```bash
     $ Prepare_reference_UniRef90.sh OMARU_dir/OMARU_databases
 ```
-if you adopt your original functional reference data, FASTA file should be converted to the format of bowtie reference, and the additional following data should be prepared in `OMARU_dir/OMARU_databases`.
+if you adopt your original functional reference data, FASTA file should be converted to the format of bowtie reference, and the additional following data should be prepared in `<OMARU_dir>/OMARU_databases`.
 
 &nbsp; 1 `<gene_reference>_annotatioin.txt.gz` (refer to `EXAMPLE_gene_annotation.txt`)
 
@@ -97,18 +97,16 @@ if you adopt your original functional reference data, FASTA file should be conve
 
 **Note**: This process can be time and resource intensive, taking several hours, almost 200GB of free disk space.
 
-By default, MetaLAFFA is able to interface with Sun Grid Engine (SGE) and HTCondor clusters. This is achieved via the use of Python job submission wrapper scripts, included in the `$CONDA_PREFIX/MetaLAFFA/src/` directory (`$CONDA_PREFIX/MetaLAFFA/src/sge_submission_wrapper.py` and `$CONDA_PREFIX/src/condor_submission_wrapper.py` respectively). If your cluster uses a different cluster management system, then you will need to create your own job submission wrapper by following these steps:
-
 ## Create project directory <OMARU_project_dir> and set your data
 Users can create a new project directory as follows:
 
     prepare_project_dir.sh OMARU_project_dir OMARU_dir/OMARU_scripts
 
-Put your input data of metagenomic shotgun sequencing (FASTQ format) to predetermined folder (`OMARU_project_dir/data/original_fastq`) according to the following format:
+Put your input data of metagenomic shotgun sequencing (FASTQ format) to predetermined folder (`<OMARU_project_dir>/data/original_fastq`) according to the following format:
 
 **Name** `<Sample_ID>_R1.fastq.gz` `<Sample_ID>_R2.fastq.gz`
 
-Put your sample list with metadata to predetermined folder (`OMARU_project_dir/data`) according to the following format:
+Put your sample list with metadata to predetermined folder (`<OMARU_project_dir>/data`) according to the following format:
 
 **Name** `original_sample_list.txt`
 
@@ -116,7 +114,7 @@ Put your sample list with metadata to predetermined folder (`OMARU_project_dir/d
 
 **Column** The first three columns are sample ID, gender, age, and other metadata from the fourth column onwards.
 
-Arrange some parameters of `OMARU_project_dir/config.yaml` that you may want to change. 
+Arrange some parameters of `<OMARU_project_dir>/config.yaml` that you may want to change. 
 | Parameter | Description | Default |
 |:-----------:|:-----------|:------------|
 |PHENOTYPE|one word of your project such as phenotype|project_phenotype|
@@ -139,16 +137,17 @@ Arrange some parameters of `OMARU_project_dir/config.yaml` that you may want to 
 
 various options can be used according to Snakemake such as:
 
-    #If you are running MetaLAFFA on a cluster, use:
-    ./OMARU.py --cluster
--
--
--
--
--
--
+    # run OMARU locally:
+    snakemake -s script/OMARU.sm --jobs 10
+    
+    # perform a dry-run locally
+    snakemake -s script/OMARU.sm --jobs 10 -n
 
-See the "Executing Snakemake" section of the
+    # run OMARU on a cluster:
+    snakemake -s script/OMARU.sm --cluster qsub --jobs 20
+
+
+For more details, see the "Executing Snakemake" section of the
 [Snakemake docs](https://snakemake.readthedocs.io/en/v5.1.4/index.html).
 
 ### Step 1: Read QC
@@ -159,26 +158,26 @@ See the "Executing Snakemake" section of the
 ```
 
 #### output
-You can find QCed FASTQ files in the output directory, `OMARU_project_dir/result/QC/QCed_fastq`
+You can find QCed FASTQ files in the output directory, `<OMARU_project_dir>/result/QC/QCed_fastq`
 
-You can also check tables and figures of the statistical summary in the QC process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
+You can also check tables and figures of the statistical summary in the QC process at the output directory, `<OMARU_project_dir>/result/<Phenotype>_summary`.
 
-For the next step, <ins>select the samples that has passed QC</ins>, and <ins>update the sample list</ins> with the name `QCed1_sample_list.txt` at `OMARU_project_dir/data` . 
+For the next step, <ins>select the samples that has passed QC</ins>, and <ins>update the sample list</ins> with the name `QCed1_sample_list.txt` at `<OMARU_project_dir>/data` . 
 
 
 ### Step 2: Construct phylogenetic and functional profiling
 
 ```bash
     cd OMARU_project_dir
-    snakemake -s OMARU_QCed1.sm 
+    snakemake -s <OMARU>.sm 
 ```
 
 #### output
 
-You can find QCed FASTQ files in the output directory, `OMARU_project_dir/result/QC/QCed_fastq`
-As in the previous step, you can check tables and figures of the statistical summary in the profiling process at the output directory, `OMARU_project_dir/result/<Phenotype>_summary`.
+You can find QCed FASTQ files in the output directory, `<OMARU_project_dir>/result/QC/QCed_fastq`
+As in the previous step, you can check tables and figures of the statistical summary in the profiling process at the output directory, `<OMARU_project_dir>/result/<Phenotype>_summary`.
 
-For the next step, <ins>select the samples with sufficient quality in the profiling process</ins>, and <ins>update the sample list</ins> with the name `QCed2_sample_list.txt` at `OMARU_project_dir/data`. 
+For the next step, <ins>select the samples with sufficient quality in the profiling process</ins>, and <ins>update the sample list</ins> with the name `QCed2_sample_list.txt` at `<OMARU_project_dir>/data`. 
 
 ### Step 3: Check the phylogenetic and gene abundance data
 
@@ -188,9 +187,9 @@ For the next step, <ins>select the samples with sufficient quality in the profil
 ```
 
 #### output
-You can check tables and figures of the statistical summary of the abundance data at the output directory, `OMARU_project_dir/result/PHYL_QCed2/<Phylogenetic_reference>_graph_basic` and `OMARU_project_dir/result/PHYL_QCed2/<Gene_reference>_graph_basic`.
+You can check tables and figures of the statistical summary of the abundance data at the output directory, `<OMARU_project_dir>/result/PHYL_QCed2/<Phylogenetic_reference>_graph_basic` and `<OMARU_project_dir>/result/PHYL_QCed2/<Gene_reference>_graph_basic`.
 
-For the next step, <ins>select the samples with appropriate profiling data for analysis</ins>, and <ins>update the sample list</ins> with the name `QCed3_sample_list.txt` at `OMARU_project_dir/data`. 
+For the next step, <ins>select the samples with appropriate profiling data for analysis</ins>, and <ins>update the sample list</ins> with the name `QCed3_sample_list.txt` at `<OMARU_project_dir>/data`. 
 
 ### Step 4-1: Case-control association test for phylogenetic abundance data
 
