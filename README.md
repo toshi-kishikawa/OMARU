@@ -148,8 +148,8 @@ various options can be used according to Snakemake such as:
 -
 -
 
-
-
+See the "Executing Snakemake" section of the
+[Snakemake docs](https://snakemake.readthedocs.io/en/v5.1.4/index.html).
 
 ### Step 1: Read QC
 
