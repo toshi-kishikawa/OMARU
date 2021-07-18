@@ -124,7 +124,7 @@ Customize parameters of `<OMARU_project_dir>/config.yaml` that you may want to c
 | Parameter | Description | Default |
 |:-----------:|:-----------|:------------|
 |PHENOTYPE|one word of your project such as phenotype|project_phenotype|
-|DB_DIR|absolute pathname of your database directory|/OAMRU/OMARU_databases|
+|DB_DIR|absolute pathname of your database directory|<OAMRU_dir>/OMARU_databases|
 |THREAD|number of threads used by each shell script|4|
 |REF: HUMAN|reference name of the human genome|Homo_sapiens_assembly38|
 |REF: PHYL|phylogenetic reference name|CHOCO|
