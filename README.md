@@ -13,7 +13,7 @@ OMARU (**O**mnibus **m**etagenome-wide **a**ssociation study with **r**ob**u**st
 - link taxa and genes in the metagenome. 
 
 ## Overview
-![Graphical_abstract](https://user-images.githubusercontent.com/78953113/122957772-39fb9200-d3bd-11eb-86d0-f2421ab638a7.png)
+![Graphical_abstract](https://user-images.githubusercontent.com/78953113/126056023-4b75cdc3-f84f-45aa-8ed1-838ebc3bf386.png)
 
 ## Publication/Citation
 Currently under development
