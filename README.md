@@ -293,9 +293,8 @@ Select the samples that has passed QC, and update the sample list with the name 
 
 ## Licence
 This software is freely available for academic users. Usage for commercial purposes is not allowed.
-Please refer to the [LICENCE](https://github.com/konumat/Trans-Phar/blob/master/LICENSE.md/LICENSE.md) page.
+Please refer to the [LICENCE](https://github.com/toshi-kishikawa/OMARU/blob/master/LICENSE.md) page.
 
 ## Contact
-
 Toshihiro Kishikawa ([tkishikawa@ent.med.osaka-u.ac.jp](mailto:tkishikawa@ent.med.osaka-u.ac.jp))
 
