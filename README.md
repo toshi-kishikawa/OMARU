@@ -44,7 +44,7 @@ To install OMARU via Conda, create a new environment using the following command
  
  Activate the `OMARU` environment and then run as follows.
 
-- **Download and prepare reference databases for read QC such as phix, adapters (in Trimmomatic), and human genome (hg38)**
+- **Download and prepare reference databases for read QC such as phix, adapters (in Trimmomatic), and the human genome (hg38)**
 ```bash
     $ Prepare_reference_read_QC.sh OMARU_dir/OMARU_databases
 ```
@@ -52,7 +52,7 @@ To install OMARU via Conda, create a new environment using the following command
 ```bash
     $ Prepare_reference_ChocoPhlAn.sh OMARU_dir/OMARU_databases
    ```
-if you adopt your original phylogenetic reference data, FASTA file should be converted to the format of bowtie reference, and the following data should be prepared in `<OMARU_dir>/OMARU_databases`.
+If you adopt your original phylogenetic reference data, FASTA file should be converted to the format of Bowtie reference, and the following data should be prepared in `<OMARU_dir>/OMARU_databases`.
 
 &nbsp; 1 `NCBI_species_scaffold_<phylogenetic_reference>.txt` (refer to `NCBI_species_scaffold_EXAMPLE.txt`)
 
@@ -64,25 +64,25 @@ if you adopt your original phylogenetic reference data, FASTA file should be con
   
 &emsp; **Row**  One FASTA file per row
   
-&emsp; **Column** 1.NCBI Accession ID 2~8.Kingdom ~ Species
+&emsp; **Column** The first column is NCBI Accession ID. The second and subsequent columns are lineages (Kingdom ~ Species).
 
 &nbsp; 3 `eachL_lineage_<phylogenetic_reference>.txt` (refer to `eachL_lineage_EXAMPLE.txt`) 　　
 
 &emsp; **Row**  One clade per row
 
-&emsp; **Column** 1.Clade 2~8.Kingdom ~ Species
+&emsp; **Column** The first column is the clade. The second and subsequent columns are lineages (Kingdom ~ Species).
 
 - **Download and prepare reference databases of functional analyses (based on UniRef90 and GO term)**
 ```bash
     $ Prepare_reference_UniRef90.sh OMARU_dir/OMARU_databases
 ```
-if you adopt your original functional reference data, FASTA file should be converted to the format of bowtie reference, and the additional following data should be prepared in `<OMARU_dir>/OMARU_databases`.
+If you adopt your original functional reference data, FASTA file should be converted to the format of Bowtie reference, and the additional following data should be prepared in `<OMARU_dir>/OMARU_databases`.
 
 &nbsp; 1 `<gene_reference>_annotatioin.txt.gz` (refer to `EXAMPLE_gene_annotation.txt`)
 
 &emsp; **Row** One gene per row
   
-&emsp; **Column** 1.Gene ID 2~. Metadata of gene
+&emsp; **Column** The first column is gene ID. The second and subsequent columns are metadata of genes.
   
 &nbsp; 2 `header_<gene_reference>_annotatioin.txt` (refer to `header_EXAMPLE_gene_annotation.txt`)
   
@@ -90,12 +90,12 @@ if you adopt your original functional reference data, FASTA file should be conve
 
 &emsp; **Row** One pathway per row
   
-&emsp; **Column** 1.pathway ID 2~. Metadata of pathway
+&emsp; **Column** The first column is pathway ID. The second and subsequent columns are metadata of pathways.
   
 &nbsp; 2 `header_<pathway_reference>_annotatioin.txt` (refer to `header_EXAMPLE_pathway_annotation.txt`)
 
 
-**Note**: This process can be time and resource intensive, taking several hours, almost 200GB of free disk space.
+**Note**: This process can be time and resource-intensive, taking several hours, almost 200GB of free disk space.
 
 ## Create project directory <OMARU_project_dir> and set your data
 Users can create a new project directory as follows:
@@ -110,37 +110,37 @@ Put your sample list with metadata to predetermined folder (`<OMARU_project_dir>
 
 **Name** `original_sample_list.txt`
 
-**Row**  The first row is header. One sample per row from the second row onwards.
+**Row**  The first row is the header. One sample per row from the second row onwards.
 
-**Column** The first three columns are sample ID, gender, and age, in that order. Other metadata from the fourth column onwards.
+**Column** The first three columns are sample ID, gender, and age, in that order. The fourth column and subsequent columns are the other metadata.
 
-Put covarite list for phylogenetic and gene association tests at `<OMARU_project_dir>/data` according to the following format:
+Put covariate list for phylogenetic and gene association tests at `<OMARU_project_dir>/data` according to the following format:
 
 **Name** `covariates.txt`
 
 **Row**  One covariate per row. (Each word should be the same as the word of the header of `original_sample_list.txt`)
 
-Arrange some parameters of `<OMARU_project_dir>/config.yaml` that you may want to change. 
+Customize parameters of `<OMARU_project_dir>/config.yaml` that you may want to change. 
 | Parameter | Description | Default |
 |:-----------:|:-----------|:------------|
 |PHENOTYPE|one word of your project such as phenotype|project_phenotype|
 |DB_DIR|absolute pathname of your database directory|/OAMRU/OMARU_databases|
 |THREAD|number of threads used by each shell script|4|
-|REF: HUMAN|reference name of human genome|Homo_sapiens_assembly38|
+|REF: HUMAN|reference name of the human genome|Homo_sapiens_assembly38|
 |REF: PHYL|phylogenetic reference name|CHOCO|
 |REF: GENE|reference name of gene|UniRef90|
 |REF: PATH|reference name of pathway|GO|
 |PHYL_THRESHOLD|cutoff value for relative abundance rate of clades <br> 5 indicates 1 × 10<sup>-5</sup>|5|
-|SUFFIX_COV|suffixes for list file of covariates in association tests <br> See details in `Step 4-1`|\_wBMI|
+|SUFFIX_COV|suffix for a list file of covariates in association tests <br> See details in `Step 4-1`|\_wBMI|
 |N_PCs|list of numbers of PCs as covariates to be tried in association test <br> See details in `Step 4-1`|[0,1,2,3]|
 |N_PC_PHYL|number of PC finally adopted in the phylogenetic association test|2|
 |N_PC_GENE|number of PC finally adopted in the gene association test|2|
 |PQ|threshold of p-value and false discovery rate|0.05|
 |N_SIG_CLADE|number of clades with significant differences in the phylogenetic association test|2|
-|TARGETS|genes to be evaluated for link with phylogenetic data|[\"XXX\",\"YYY\"]|
+|TARGETS|genes to be evaluated for links with phylogenetic data|[\"XXX\",\"YYY\"]|
 
 ## Usage
-various options can be used according to Snakemake such as:
+Various options are available d according to the function of `Snakemake` such as:
 
     # run OMARU locally:
     snakemake -s script/OMARU.sm --jobs 10
@@ -163,11 +163,11 @@ For more details, see the "Executing Snakemake" section of the
 ```
 
 #### output
-You can find QCed FASTQ files in the output directory, `<OMARU_project_dir>/result/QC/QCed_fastq`
+You can find QCed FASTQ files in the output directory, `<OMARU_project_dir>/result/QC/QCed_fastq`.
 
 You can also check tables and figures of the statistical summary in the QC process at the output directory, `<OMARU_project_dir>/result/<Phenotype>_summary`.
 
-For the next step, <ins>select the samples that has passed QC</ins>, and <ins>update the sample list</ins> with the name `QCed1_sample_list.txt` at `<OMARU_project_dir>/data` . 
+For the next step, <ins>select the samples that have passed QC</ins>, and <ins>update the sample list</ins> with the name `QCed1_sample_list.txt` at `<OMARU_project_dir>/data` . 
 
 
 ### Step 2: Construct phylogenetic and functional profiling
@@ -198,9 +198,9 @@ For the next step, <ins>select the samples with appropriate profiling data for a
 
 ### Step 4-1: Case-control association test for phylogenetic abundance data
 
-You can customize the metadata used as covariates from the default, `covariates.txt` at `<OMARU_project_dir>/data/`. Make new list of covariates with the name `covariates<SUFFIX_COV>.txt` and change the parameter of `SUFFIX_COV` in `<OMARU_project_dir>/config.yaml`.
+The covariate list can be changed from the default of `<OMARU_project_dir>/data/covariates.txt`. (The default is only sex and age). Make the new list of covariates with the name `covariates<SUFFIX_COV>.txt` and change the parameter of `SUFFIX_COV` in `<OMARU_project_dir>/config.yaml`.
 
-When you change the list of numbers of PCs used as covariates, for example to try a range of four PCs to seven PCs, change the parameter of `N_PCs` in `<OMARU_project_dir>/config.yaml` to [4,5,6,7].
+You can change the list of numbers of PCs used as covariates. For example, to try a range of four PCs to seven PCs, change the parameter of `N_PCs` in `<OMARU_project_dir>/config.yaml` to [4,5,6,7].
 
 
 ```bash
@@ -224,18 +224,18 @@ For the next step, <ins>select the number of PCs to be adopted as covariates</in
 #### output
 You can find summary statistics that integrate permutation results and annotation information with the name `sumstats_*_annot.txt` at  `<OMARU_project_dir>/result/PHYL_QCed3/<Phylogenetic_reference>_association_test/<covariates>`. Also, figures at `<OMARU_project_dir>/result/PHYL_QCed3/<Phylogenetic_reference>_association_graph`.
 
-  A phylogenetic tree indicating the association results is at `result/PHYL_QCed3/<Phylogenetic_reference>_ggtree/<covariates>`
+  A phylogenetic tree indicating the association results is at `result/PHYL_QCed3/<Phylogenetic_reference>_ggtree/<covariates>`.
 
 ### Step 5-1: Case-control association test for gene abundance data
  
-You can customize the parameter of `SUFFIX_COV` and `N_PCs` in `<OMARU_project_dir>/config.yaml` as in `Step 4-1`.
+You can customize the parameters of `SUFFIX_COV` and `N_PCs` in `<OMARU_project_dir>/config.yaml` as in `Step 4-1`.
 
 ```bash
     cd OMARU_project_dir
     snakemake -s OMARU_Func_AS.sm 
 ```
 #### output
-You can find summary statistics of result of gene association tests with the name `sumstats_*.txt` at  `<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_test/<covariates>`. Also, figures at `<OMARU_project_dir>/<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_graph`.
+You can find summary statistics of results of gene association tests with the name `sumstats_*.txt` at  `<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_test/<covariates>`. Also, figures at `<OMARU_project_dir>/<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_graph`.
 
 For the next step, <ins>select the number of PCs to be adopted as covariates</ins>, and <ins>change the parameter of `N_PC_FUNC` in `<OMARU_project_dir>/config.yaml`. 
 
@@ -247,7 +247,7 @@ For the next step, <ins>select the number of PCs to be adopted as covariates</in
 ```
 
 #### output
-You can find summary statistics that integrate permutation results and annotation information with the name `sumstats_*_annot.txt` at  `result/FUNC_QCed3/<Gene_reference>_association_test/<covariates>`. Also, figures at `<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_graph`
+You can find summary statistics that integrate permutation results and annotation information with the name `sumstats_*_annot.txt` at  `result/FUNC_QCed3/<Gene_reference>_association_test/<covariates>`. Also, figures at `<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_graph`.
   
   
 ### Step 5-3: Gene set enrichment analysis (GSEA) using the ranking of the genes
@@ -262,6 +262,7 @@ You can find summary statistics of result of GSEA with the name `<Phenotype>_res
 
 ### Step 5-4: Links between the microbe MWAS and the germline GWAS of host
 Use a tool for pathway analysis with summary statistics from GWAS (e.g., [PASKAL](https://www2.unil.ch/cbg/index.php?title=Pascal)) in order to determine pathway enrichment of the human genome in your target phenotype.
+  
 Put the pathway enrichment data of the human genome to predetermined folder (`<OMARU_project_dir>/data`) according to the following format:
 
 **Name** `<Phenotype>_GWAS_<Pathway_reference>.txt`
@@ -279,7 +280,7 @@ Put the pathway enrichment data of the human genome to predetermined folder (`<O
 You can check tables and figures of the links between MWAS and GWAS at the output directory, `<OMARU_project_dir>/result/FUNC_QCed3/MWAS_GWAS/<Pathway_reference>`.
 
 ### Step 6: Links between taxa and genes in the metagenome.
-Set the genes to be evaluated the links with phylogenetic data as the parameter of `TARGETS` in `<OMARU_project_dir>/config.yaml`
+Set the genes to be evaluated for links with phylogenetic data as the parameter of `TARGETS` in `<OMARU_project_dir>/config.yaml`.
 
 ```bash
     cd OMARU_project_dir
