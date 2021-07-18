@@ -162,7 +162,7 @@ For more details, see the "Executing Snakemake" section of the
     snakemake -s OMARU_read_QC.sm 
 ```
 
-#### output
+#### Output
 You can find QCed FASTQ files in the output directory, `<OMARU_project_dir>/result/QC/QCed_fastq`.
 
 You can also check tables and figures of the statistical summary in the QC process at the output directory, `<OMARU_project_dir>/result/<Phenotype>_summary`.
@@ -177,7 +177,7 @@ For the next step, <ins>select the samples that have passed QC</ins>, and <ins>u
     snakemake -s OMARU_QCed1.sm 
 ```
 
-#### output
+#### Output
 You can find QCed FASTQ files in the output directory, `<OMARU_project_dir>/result/QC/QCed_fastq`
 As in the previous step, you can check tables and figures of the statistical summary in the profiling process at the output directory, `<OMARU_project_dir>/result/<Phenotype>_summary`.
 
@@ -190,7 +190,7 @@ For the next step, <ins>select the samples with sufficient quality in the profil
     snakemake -s OMARU_QCed2.sm 
 ```
 
-#### output
+#### Output
 
 You can check tables and figures of the statistical summary of the abundance data at the output directory, `<OMARU_project_dir>/result/PHYL_QCed2/<Phylogenetic_reference>_graph_basic` and `<OMARU_project_dir>/result/PHYL_QCed2/<Gene_reference>_graph_basic`.
 
@@ -208,7 +208,7 @@ You can change the list of numbers of PCs used as covariates. For example, to tr
     snakemake -s OMARU_Phyl_AS.sm 
 ```
 
-#### output
+#### Output
 You can find summary statistics of result of phylogenetic association tests with the name `sumstats_*.txt` at  `<OMARU_project_dir>/result/PHYL_QCed3/<Phylogenetic_reference>_association_test/<covariates>`. Also, figures at `<OMARU_project_dir>/result/PHYL_QCed3/<Phylogenetic_reference>_association_graph`.
 
 For the next step, <ins>select the number of PCs to be adopted as covariates</ins>, and <ins>change the parameter of `N_PC_PHYL` in `<OMARU_project_dir>/config.yaml`. 
@@ -221,7 +221,7 @@ For the next step, <ins>select the number of PCs to be adopted as covariates</in
     snakemake -s OMARU_Phyl_permutation_visualization.sm 
 ```
 
-#### output
+#### Output
 You can find summary statistics that integrate permutation results and annotation information with the name `sumstats_*_annot.txt` at  `<OMARU_project_dir>/result/PHYL_QCed3/<Phylogenetic_reference>_association_test/<covariates>`. Also, figures at `<OMARU_project_dir>/result/PHYL_QCed3/<Phylogenetic_reference>_association_graph`.
 
   A phylogenetic tree indicating the association results is at `result/PHYL_QCed3/<Phylogenetic_reference>_ggtree/<covariates>`.
@@ -234,7 +234,7 @@ You can customize the parameters of `SUFFIX_COV` and `N_PCs` in `<OMARU_project_
     cd OMARU_project_dir
     snakemake -s OMARU_Func_AS.sm 
 ```
-#### output
+#### Output
 You can find summary statistics of results of gene association tests with the name `sumstats_*.txt` at  `<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_test/<covariates>`. Also, figures at `<OMARU_project_dir>/<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_graph`.
 
 For the next step, <ins>select the number of PCs to be adopted as covariates</ins>, and <ins>change the parameter of `N_PC_FUNC` in `<OMARU_project_dir>/config.yaml`. 
@@ -246,7 +246,7 @@ For the next step, <ins>select the number of PCs to be adopted as covariates</in
     snakemake -s OMARU_Func_permutation.sm 
 ```
 
-#### output
+#### Output
 You can find summary statistics that integrate permutation results and annotation information with the name `sumstats_*_annot.txt` at  `result/FUNC_QCed3/<Gene_reference>_association_test/<covariates>`. Also, figures at `<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_graph`.
   
   
@@ -257,7 +257,7 @@ You can find summary statistics that integrate permutation results and annotatio
     snakemake -s OMARU_FUNC_GSEA.sm 
 ```
 
-#### output
+#### Output
 You can find summary statistics of result of GSEA with the name `<Phenotype>_result_GSEA_<Gene_reference>_<Pathway_reference>_annot.txt` at  `<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_test/<covariates>/<Gene_reference>_<Pathway_reference>`. Also, figures at `<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_graph/<covariates>/GSEA_<covariates>`.
 
 ### Step 5-4: Links between the microbe MWAS and the germline GWAS of host
@@ -276,7 +276,7 @@ Put the pathway enrichment data of the human genome to predetermined folder (`<O
     snakemake -s OMARU_Func_MWAS_GWAS.sm 
 ```
 
-#### output
+#### Output
 You can check tables and figures of the links between MWAS and GWAS at the output directory, `<OMARU_project_dir>/result/FUNC_QCed3/MWAS_GWAS/<Pathway_reference>`.
 
 ### Step 6: Links between taxa and genes in the metagenome.
@@ -287,7 +287,7 @@ Set the genes to be evaluated for links with phylogenetic data as the parameter 
     snakemake -s OMARU_Phy_Fun_link.sm 
 ```
 
-#### output
+#### Output
 You can check tables and figures of the statistical summary in the QC process at the output directory, `<OMARU_project_dir>/result/PHYL_FUNC_link/<TARGETS>/<TARGETS>_result`.
 
 ## Licence
