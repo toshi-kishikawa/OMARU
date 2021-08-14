@@ -131,15 +131,15 @@ Customize parameters of `<OMARU_project_dir>/config.yaml` that you may want to c
 ## Usage
 Various options are available d according to the function of `Snakemake` such as:
 ```bash
-    # run OMARU locally:
-    $ snakemake -s script/OMARU.sm --jobs 10
+# run OMARU locally:
+$ snakemake -s script/OMARU.sm --jobs 10
     
-    # perform a dry-run locally:
-    $ snakemake -s script/OMARU.sm --jobs 10 -n
+# perform a dry-run locally:
+$ snakemake -s script/OMARU.sm --jobs 10 -n
 
-    # run OMARU on a cluster:
-    $ snakemake -s script/OMARU.sm --cluster qsub --jobs 20
-
+# run OMARU on a cluster:
+$ snakemake -s script/OMARU.sm --cluster qsub --jobs 20
+```
 
 For more details, see the "Executing Snakemake" section of the
 [Snakemake docs](https://snakemake.readthedocs.io/en/v5.1.4/index.html).
