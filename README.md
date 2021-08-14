@@ -29,11 +29,13 @@ To install OMARU via Conda, create a new environment using the following command
 ```bash
     # Download conda-pack of OMARU into directory <OMARU_dir>
     $ mkdir -p OMARU_dir
-    $ git clone https://github.com/toshi-kishikawa/OMARU
+    $ wget https://zenodo.org/record/5201539/files/OMARU.tar.gz
+    
+    # Activate the usage environment of downloaded conda-pack. This adds `OMARU_dir/bin` to your path
     $ tar -xzf OMARU.tar.gz -C OMARU_dir
-
-    # Activate the environment. This adds `OMARU_dir/bin` to your path
-    $ source OMARU_dir/bin/activate
+    $ cd OMARU_dir
+    $ source ./bin/activate
+    $ conda-unpack
  ```
  
 ## Download of reference databases 
