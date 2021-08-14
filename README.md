@@ -101,7 +101,7 @@ Put your sample list with metadata to predetermined folder (`<OMARU_project_dir>
 &emsp;&emsp;&emsp;   One sample per row from the second row onwards.  
 &emsp; **Column** The first four columns are sample ID, phenotype, gender, and age, in that order.  
 &emsp;&emsp;&emsp;&emsp;&emsp; The fifth column and subsequent columns are the other metadata.  
-&emsp;&emsp;&emsp;&emsp;&emsp; At phenotype column, positive and negative samples shoud be 1 and 0, respectively. 
+&emsp;&emsp;&emsp;&emsp;&emsp; At phenotype column, positive and negative samples should be 1 and 0, respectively. 
 
 Put covariate list for phylogenetic and gene association tests at `<OMARU_project_dir>/data` according to the following format:
 
@@ -187,7 +187,8 @@ For the next step, <ins>select the samples with appropriate profiling data for a
 
 ### Step 4-1: Case-control association test for phylogenetic abundance data
 
-The covariate list can be changed from the default of `<OMARU_project_dir>/data/covariates.txt`. (The default is only sex and age). Make the new list of covariates with the name `covariates<SUFFIX_COV>.txt` and change the parameter of `SUFFIX_COV` in `<OMARU_project_dir>/config.yaml`.
+The covariate list can be changed from the default of `<OMARU_project_dir>/data/covariates.txt`. (The default is only sex and age).  
+Make the new list of covariates with the name `covariates<SUFFIX_COV>.txt` and change the parameter of `SUFFIX_COV` in `<OMARU_project_dir>/config.yaml`.
 
 You can change the list of numbers of PCs used as covariates. For example, to try a range of four PCs to seven PCs, change the parameter of `N_PCs` in `<OMARU_project_dir>/config.yaml` to [4,5,6,7].
 
@@ -198,7 +199,8 @@ You can change the list of numbers of PCs used as covariates. For example, to tr
 ```
 
 #### Output
-You can find summary statistics of result of phylogenetic association tests with the name `sumstats_*.txt` at  `<OMARU_project_dir>/result/PHYL_QCed3/<Phylogenetic_reference>_association_test/<covariates>`. Also, figures at `<OMARU_project_dir>/result/PHYL_QCed3/<Phylogenetic_reference>_association_graph`.
+You can find summary statistics of result of phylogenetic association tests with the name `sumstats_*.txt` at  `<OMARU_project_dir>/result/PHYL_QCed3/<Phylogenetic_reference>_association_test/<covariates>`.  
+Also, figures at `<OMARU_project_dir>/result/PHYL_QCed3/<Phylogenetic_reference>_association_graph`.
 
 For the next step, <ins>select the number of PCs to be adopted as covariates</ins>, and <ins>change the parameter of `N_PC_PHYL` in `<OMARU_project_dir>/config.yaml`. 
   
@@ -211,9 +213,10 @@ For the next step, <ins>select the number of PCs to be adopted as covariates</in
 ```
 
 #### Output
-You can find summary statistics that integrate permutation results and annotation information with the name `sumstats_*_annot.txt` at  `<OMARU_project_dir>/result/PHYL_QCed3/<Phylogenetic_reference>_association_test/<covariates>`. Also, figures at `<OMARU_project_dir>/result/PHYL_QCed3/<Phylogenetic_reference>_association_graph`.
+You can find summary statistics that integrate permutation results and annotation information with the name `sumstats_*_annot.txt` at  `<OMARU_project_dir>/result/PHYL_QCed3/<Phylogenetic_reference>_association_test/<covariates>`.  
+Also, figures at `<OMARU_project_dir>/result/PHYL_QCed3/<Phylogenetic_reference>_association_graph`.
 
-  A phylogenetic tree indicating the association results is at `result/PHYL_QCed3/<Phylogenetic_reference>_ggtree/<covariates>`.
+A phylogenetic tree indicating the association results is at `result/PHYL_QCed3/<Phylogenetic_reference>_ggtree/<covariates>`.
 
 ### Step 5-1: Case-control association test for gene abundance data
  
@@ -224,7 +227,8 @@ You can customize the parameters of `SUFFIX_COV` and `N_PCs` in `<OMARU_project_
    $ snakemake -s Snakefiles/OMARU_Func_AS.sm 
 ```
 #### Output
-You can find summary statistics of results of gene association tests with the name `sumstats_*.txt` at  `<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_test/<covariates>`. Also, figures at `<OMARU_project_dir>/<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_graph`.
+You can find summary statistics of results of gene association tests with the name `sumstats_*.txt` at  `<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_test/<covariates>`.  
+Also, figures at `<OMARU_project_dir>/<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_graph`.
 
 For the next step, <ins>select the number of PCs to be adopted as covariates</ins>, and <ins>change the parameter of `N_PC_FUNC` in `<OMARU_project_dir>/config.yaml`. 
 
@@ -236,8 +240,8 @@ For the next step, <ins>select the number of PCs to be adopted as covariates</in
 ```
 
 #### Output
-You can find summary statistics that integrate permutation results and annotation information with the name `sumstats_*_annot.txt` at  `result/FUNC_QCed3/<Gene_reference>_association_test/<covariates>`. Also, figures at `<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_graph`.
-  
+You can find summary statistics that integrate permutation results and annotation information with the name `sumstats_*_annot.txt` at  `result/FUNC_QCed3/<Gene_reference>_association_test/<covariates>`.  
+Also, figures at `<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_graph`.
   
 ### Step 5-3: Gene set enrichment analysis (GSEA) using the ranking of the genes
 
@@ -247,17 +251,16 @@ You can find summary statistics that integrate permutation results and annotatio
 ```
 
 #### Output
-You can find summary statistics of result of GSEA with the name `<Phenotype>_result_GSEA_<Gene_reference>_<Pathway_reference>_annot.txt` at  `<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_test/<covariates>/<Gene_reference>_<Pathway_reference>`. Also, figures at `<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_graph/<covariates>/GSEA_<covariates>`.
+You can find summary statistics of result of GSEA with the name `<Phenotype>_result_GSEA_<Gene_reference>_<Pathway_reference>_annot.txt` at  `<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_test/<covariates>/<Gene_reference>_<Pathway_reference>`.  
+Also, figures at `<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_graph/<covariates>/GSEA_<covariates>`.
 
 ### Step 5-4: Links between the microbe MWAS and the germline GWAS of host
 Use a tool for pathway analysis with summary statistics from GWAS (e.g., [PASKAL](https://www2.unil.ch/cbg/index.php?title=Pascal)) in order to determine pathway enrichment of the human genome in your target phenotype.
   
 Put the pathway enrichment data of the human genome to predetermined folder (`<OMARU_project_dir>/data`) according to the following format:
 
-**Name** `<Phenotype>_GWAS_<Pathway_reference>.txt`
-
-**Row**  The first row is header. One pathway per row from the second row onwards.
-
+**Name** `<Phenotype>_GWAS_<Pathway_reference>.txt`  
+**Row**  The first row is header. One pathway per row from the second row onwards.  
 **Column** The first column is pathway ID and the second column is p-value.
 
 ```bash
@@ -280,7 +283,7 @@ Set the genes to be evaluated for links with phylogenetic data as the parameter 
 You can check tables and figures of the statistical summary in the QC process at the output directory, `<OMARU_project_dir>/result/PHYL_FUNC_link/<TARGETS>/<TARGETS>_result`.
 
 ## Licence
-This software is freely available for academic users. Usage for commercial purposes is not allowed.
+This software is freely available for academic users. Usage for commercial purposes is not allowed.  
 Please refer to the [LICENCE](https://github.com/toshi-kishikawa/OMARU/blob/master/LICENSE.md) page.
 
 ## Contact
