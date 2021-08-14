@@ -9,7 +9,7 @@ OMARU (**O**mnibus **m**etagenome-wide **a**ssociation study with **r**ob**u**st
 - construct phylogenetic and functional profiling of the metagenome. 
 - conduct three major components of the case-control association tests of MWAS (i.e., phylogenetic, gene, and biological pathway analyses) with rigorous handling of false positives in statistical analysis.
 - visualize attractive figures which enables comprehensive summary of the association test results.
-- evaluate pathway-level links between the metagenome and the germline genome-wide association studies (GWAS) of the host genome, 
+- evaluate pathway-level links between the metagenome and the germline genome-wide association studies (GWAS) of the host genome. 
 - link taxa and genes in the metagenome. 
 
 ## Overview
