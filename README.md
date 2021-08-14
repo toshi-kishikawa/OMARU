@@ -28,12 +28,12 @@ To install OMARU via Conda, create a new environment using the following command
 
 ```bash
     # Download conda-pack of OMARU into directory <OMARU_dir>
-    mkdir -p OMARU_dir
-    git clone https://github.com/toshi-kishikawa/OMARU
-    tar -xzf OMARU.tar.gz -C OMARU_dir
+    $ mkdir -p OMARU_dir
+    $ git clone https://github.com/toshi-kishikawa/OMARU
+    $ tar -xzf OMARU.tar.gz -C OMARU_dir
 
     # Activate the environment. This adds `OMARU_dir/bin` to your path
-    source OMARU_dir/bin/activate
+    $ source OMARU_dir/bin/activate
  ```
  
 ## Download of reference databases 
@@ -99,9 +99,9 @@ If you adopt your original functional reference data, FASTA file should be conve
 
 ## Create project directory <OMARU_project_dir> and set your data
 Users can create a new project directory as follows:
-
-    prepare_project_dir.sh OMARU_project_dir OMARU_dir/OMARU_scripts
-
+```bash
+    $ prepare_project_dir.sh OMARU_project_dir OMARU_dir/OMARU_scripts
+```
 Put your input data of metagenomic shotgun sequencing (FASTQ format) to predetermined folder (`<OMARU_project_dir>/data/original_fastq`) according to the following format:
 
 **Name** `<Sample_ID>_R1.fastq.gz` `<Sample_ID>_R2.fastq.gz`
@@ -141,15 +141,15 @@ Customize parameters of `<OMARU_project_dir>/config.yaml` that you may want to c
 
 ## Usage
 Various options are available d according to the function of `Snakemake` such as:
-
+```bash
     # run OMARU locally:
-    snakemake -s script/OMARU.sm --jobs 10
+    $ snakemake -s script/OMARU.sm --jobs 10
     
     # perform a dry-run locally:
-    snakemake -s script/OMARU.sm --jobs 10 -n
+    $ snakemake -s script/OMARU.sm --jobs 10 -n
 
     # run OMARU on a cluster:
-    snakemake -s script/OMARU.sm --cluster qsub --jobs 20
+    $ snakemake -s script/OMARU.sm --cluster qsub --jobs 20
 
 
 For more details, see the "Executing Snakemake" section of the
@@ -158,8 +158,8 @@ For more details, see the "Executing Snakemake" section of the
 ### Step 1: Read QC
 
 ```bash
-    cd OMARU_project_dir
-    snakemake -s Snakefiles/OMARU_read_QC.sm 
+   $ cd OMARU_project_dir
+   $ snakemake -s Snakefiles/OMARU_read_QC.sm 
 ```
 
 #### Output
@@ -173,8 +173,8 @@ For the next step, <ins>select the samples that have passed QC</ins>, and <ins>u
 ### Step 2: Construct phylogenetic and functional profiling
 
 ```bash
-    cd OMARU_project_dir
-    snakemake -s Snakefiles/OMARU_QCed1.sm 
+   $ cd OMARU_project_dir
+   $ snakemake -s Snakefiles/OMARU_QCed1.sm 
 ```
 
 #### Output
@@ -186,8 +186,8 @@ For the next step, <ins>select the samples with sufficient quality in the profil
 ### Step 3: Check the phylogenetic and gene abundance data
 
 ```bash
-    cd OMARU_project_dir
-    snakemake -s Snakefiles/OMARU_QCed2.sm 
+   $ cd OMARU_project_dir
+   $ snakemake -s Snakefiles/OMARU_QCed2.sm 
 ```
 
 #### Output
@@ -204,8 +204,8 @@ You can change the list of numbers of PCs used as covariates. For example, to tr
 
 
 ```bash
-    cd OMARU_project_dir
-    snakemake -s Snakefiles/OMARU_Phyl_AS.sm 
+   $ cd OMARU_project_dir
+   $ snakemake -s Snakefiles/OMARU_Phyl_AS.sm 
 ```
 
 #### Output
@@ -217,8 +217,8 @@ For the next step, <ins>select the number of PCs to be adopted as covariates</in
 ### Step 4-2: Phenotype permutation and visualization of the result in the phylogetic association tests
 
 ```bash
-    cd OMARU_project_dir
-    snakemake -s Snakefiles/OMARU_Phyl_permutation_visualization.sm 
+   $ cd OMARU_project_dir
+   $ snakemake -s Snakefiles/OMARU_Phyl_permutation_visualization.sm 
 ```
 
 #### Output
@@ -231,8 +231,8 @@ You can find summary statistics that integrate permutation results and annotatio
 You can customize the parameters of `SUFFIX_COV` and `N_PCs` in `<OMARU_project_dir>/config.yaml` as in `Step 4-1`.
 
 ```bash
-    cd OMARU_project_dir
-    snakemake -s Snakefiles/OMARU_Func_AS.sm 
+   $ cd OMARU_project_dir
+   $ snakemake -s Snakefiles/OMARU_Func_AS.sm 
 ```
 #### Output
 You can find summary statistics of results of gene association tests with the name `sumstats_*.txt` at  `<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_test/<covariates>`. Also, figures at `<OMARU_project_dir>/<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_graph`.
@@ -242,8 +242,8 @@ For the next step, <ins>select the number of PCs to be adopted as covariates</in
 ### Step 5-2: Phenotype permutation in gene association tests
 
 ```bash
-    cd OMARU_project_dir
-    snakemake -s Snakefiles/OMARU_Func_permutation.sm 
+   $ cd OMARU_project_dir
+   $ snakemake -s Snakefiles/OMARU_Func_permutation.sm 
 ```
 
 #### Output
@@ -253,8 +253,8 @@ You can find summary statistics that integrate permutation results and annotatio
 ### Step 5-3: Gene set enrichment analysis (GSEA) using the ranking of the genes
 
 ```bash
-    cd OMARU_project_dir
-    snakemake -s Snakefiles/OMARU_FUNC_GSEA.sm 
+   $ cd OMARU_project_dir
+   $ snakemake -s Snakefiles/OMARU_FUNC_GSEA.sm 
 ```
 
 #### Output
@@ -272,8 +272,8 @@ Put the pathway enrichment data of the human genome to predetermined folder (`<O
 **Column** The first column is pathway ID and the second column is p-value.
 
 ```bash
-    cd OMARU_project_dir
-    snakemake -s Snakefiles/OMARU_Func_MWAS_GWAS.sm 
+   $ cd OMARU_project_dir
+   $ snakemake -s Snakefiles/OMARU_Func_MWAS_GWAS.sm 
 ```
 
 #### Output
@@ -283,8 +283,8 @@ You can check tables and figures of the links between MWAS and GWAS at the outpu
 Set the genes to be evaluated for links with phylogenetic data as the parameter of `TARGETS` in `<OMARU_project_dir>/config.yaml`.
 
 ```bash
-    cd OMARU_project_dir
-    snakemake -s Snakefiles/OMARU_Phy_Fun_link.sm 
+   $ cd OMARU_project_dir
+   $ snakemake -s Snakefiles/OMARU_Phy_Fun_link.sm 
 ```
 
 #### Output
