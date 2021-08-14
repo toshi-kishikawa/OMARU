@@ -159,7 +159,7 @@ For more details, see the "Executing Snakemake" section of the
 
 ```bash
     cd OMARU_project_dir
-    snakemake -s OMARU_read_QC.sm 
+    snakemake -s Snakefiles/OMARU_read_QC.sm 
 ```
 
 #### Output
@@ -174,7 +174,7 @@ For the next step, <ins>select the samples that have passed QC</ins>, and <ins>u
 
 ```bash
     cd OMARU_project_dir
-    snakemake -s OMARU_QCed1.sm 
+    snakemake -s Snakefiles/OMARU_QCed1.sm 
 ```
 
 #### Output
@@ -187,7 +187,7 @@ For the next step, <ins>select the samples with sufficient quality in the profil
 
 ```bash
     cd OMARU_project_dir
-    snakemake -s OMARU_QCed2.sm 
+    snakemake -s Snakefiles/OMARU_QCed2.sm 
 ```
 
 #### Output
@@ -205,7 +205,7 @@ You can change the list of numbers of PCs used as covariates. For example, to tr
 
 ```bash
     cd OMARU_project_dir
-    snakemake -s OMARU_Phyl_AS.sm 
+    snakemake -s Snakefiles/OMARU_Phyl_AS.sm 
 ```
 
 #### Output
@@ -218,7 +218,7 @@ For the next step, <ins>select the number of PCs to be adopted as covariates</in
 
 ```bash
     cd OMARU_project_dir
-    snakemake -s OMARU_Phyl_permutation_visualization.sm 
+    snakemake -s Snakefiles/OMARU_Phyl_permutation_visualization.sm 
 ```
 
 #### Output
@@ -232,7 +232,7 @@ You can customize the parameters of `SUFFIX_COV` and `N_PCs` in `<OMARU_project_
 
 ```bash
     cd OMARU_project_dir
-    snakemake -s OMARU_Func_AS.sm 
+    snakemake -s Snakefiles/OMARU_Func_AS.sm 
 ```
 #### Output
 You can find summary statistics of results of gene association tests with the name `sumstats_*.txt` at  `<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_test/<covariates>`. Also, figures at `<OMARU_project_dir>/<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_graph`.
@@ -243,7 +243,7 @@ For the next step, <ins>select the number of PCs to be adopted as covariates</in
 
 ```bash
     cd OMARU_project_dir
-    snakemake -s OMARU_Func_permutation.sm 
+    snakemake -s Snakefiles/OMARU_Func_permutation.sm 
 ```
 
 #### Output
@@ -254,7 +254,7 @@ You can find summary statistics that integrate permutation results and annotatio
 
 ```bash
     cd OMARU_project_dir
-    snakemake -s OMARU_FUNC_GSEA.sm 
+    snakemake -s Snakefiles/OMARU_FUNC_GSEA.sm 
 ```
 
 #### Output
@@ -273,7 +273,7 @@ Put the pathway enrichment data of the human genome to predetermined folder (`<O
 
 ```bash
     cd OMARU_project_dir
-    snakemake -s OMARU_Func_MWAS_GWAS.sm 
+    snakemake -s Snakefiles/OMARU_Func_MWAS_GWAS.sm 
 ```
 
 #### Output
@@ -284,7 +284,7 @@ Set the genes to be evaluated for links with phylogenetic data as the parameter 
 
 ```bash
     cd OMARU_project_dir
-    snakemake -s OMARU_Phy_Fun_link.sm 
+    snakemake -s Snakefiles/OMARU_Phy_Fun_link.sm 
 ```
 
 #### Output
