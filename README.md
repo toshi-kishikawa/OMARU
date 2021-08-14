@@ -54,22 +54,16 @@ To install OMARU via Conda, create a new environment using the following command
    ```
 If you adopt your original phylogenetic reference data, FASTA file should be converted to the format of Bowtie reference, and the following data should be prepared in `<OMARU_dir>/OMARU_databases`.
 
-&nbsp; 1 `NCBI_species_scaffold_<phylogenetic_reference>.txt` (refer to `NCBI_species_scaffold_EXAMPLE.txt`)
-
-&emsp; **Row** One scaffold in FASTA files per row
-  
+&nbsp; 1 `NCBI_species_scaffold_<phylogenetic_reference>.txt` (refer to `NCBI_species_scaffold_EXAMPLE.txt`)  
+&emsp; **Row** One scaffold in FASTA files per row   
 &emsp; **Column** 1.NCBI Accession ID 2.Species 3.Scaffold
   
-&nbsp; 2 `NCBI_lineage_<phylogenetic_reference>.txt` (refer to `NCBI_lineage_EXAMPLE.txt`)　　
-  
-&emsp; **Row**  One FASTA file per row
-  
+&nbsp; 2 `NCBI_lineage_<phylogenetic_reference>.txt` (refer to `NCBI_lineage_EXAMPLE.txt`)    
+&emsp; **Row**  One FASTA file per row  
 &emsp; **Column** The first column is NCBI Accession ID. The second and subsequent columns are lineages (Kingdom ~ Species).
 
-&nbsp; 3 `eachL_lineage_<phylogenetic_reference>.txt` (refer to `eachL_lineage_EXAMPLE.txt`) 　　
-
-&emsp; **Row**  One clade per row
-
+&nbsp; 3 `eachL_lineage_<phylogenetic_reference>.txt` (refer to `eachL_lineage_EXAMPLE.txt`)  
+&emsp; **Row**  One clade per row  
 &emsp; **Column** The first column is the clade. The second and subsequent columns are lineages (Kingdom ~ Species).
 
 - **Download and prepare reference databases of functional analyses (based on UniRef90 and GO term)**
@@ -84,13 +78,11 @@ If you adopt your original functional reference data, FASTA file should be conve
   
 &nbsp; 2 `header_<gene_reference>_annotatioin.txt` (refer to `header_EXAMPLE_gene_annotation.txt`)
   
-&nbsp; 3 `<pathway_reference>_annotatioin.txt.gz` (refer to `EXAMPLE_pathway_annotation.txt`)
-
-&emsp; **Row** One pathway per row
-  
+&nbsp; 3 `<pathway_reference>_annotatioin.txt.gz` (refer to `EXAMPLE_pathway_annotation.txt`)  
+&emsp; **Row** One pathway per row    
 &emsp; **Column** The first column is pathway ID. The second and subsequent columns are metadata of pathways.
   
-&nbsp; 2 `header_<pathway_reference>_annotatioin.txt` (refer to `header_EXAMPLE_pathway_annotation.txt`)
+&nbsp; 4 `header_<pathway_reference>_annotatioin.txt` (refer to `header_EXAMPLE_pathway_annotation.txt`)
 
 
 **Note**: This process can be time and resource-intensive, taking several hours, almost 200GB of free disk space.
@@ -100,19 +92,16 @@ Users can create a new project directory as follows:
 ```bash
     $ prepare_project_dir.sh OMARU_project_dir OMARU_dir/OMARU_scripts
 ```
-Put your input data of metagenomic shotgun sequencing (FASTQ format) to predetermined folder (`<OMARU_project_dir>/data/original_fastq`) according to the following format:
+Put your input data of metagenomic shotgun sequencing (FASTQ format) to predetermined folder (`<OMARU_project_dir>/data/original_fastq`) according to the following format:  
+&emsp; **Name** `<Sample_ID>_R1.fastq.gz` `<Sample_ID>_R2.fastq.gz`
 
-**Name** `<Sample_ID>_R1.fastq.gz` `<Sample_ID>_R2.fastq.gz`
-
-Put your sample list with metadata to predetermined folder (`<OMARU_project_dir>/data`) according to the following format:
-
-**Name** `original_sample_list.txt`
-
-**Row**  The first row is the header. The first four terms should be "Sample", "Phenotype",	"Sex", and "Age".  
-         One sample per row from the second row onwards.
-
-**Column** The first four columns are sample ID, phenotype, gender, and age, in that order. The fifth column and subsequent columns are the other metadata.
-           at phenotype column, positive and negative samples shoud be 1 and 0, respectively. 
+Put your sample list with metadata to predetermined folder (`<OMARU_project_dir>/data`) according to the following format:  
+&emsp; **Name** `original_sample_list.txt`  
+&emsp; **Row**  The first row is the header. The first four terms should be "Sample", "Phenotype",	"Sex", and "Age".  
+&emsp; &emsp;   One sample per row from the second row onwards.  
+&emsp; **Column** The first four columns are sample ID, phenotype, gender, and age, in that order.  
+&emsp; &emsp; The fifth column and subsequent columns are the other metadata.  
+&emsp; &emsp; At phenotype column, positive and negative samples shoud be 1 and 0, respectively. 
 
 Put covariate list for phylogenetic and gene association tests at `<OMARU_project_dir>/data` according to the following format:
 
