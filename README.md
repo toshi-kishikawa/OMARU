@@ -100,7 +100,7 @@ Put your sample list with metadata to predetermined folder (`<OMARU_project_dir>
 &emsp; **Row**  The first row is the header. The first four terms should be "Sample", "Phenotype",	"Sex", and "Age".  
 &emsp;&emsp;   One sample per row from the second row onwards.  
 &emsp; **Column** The first four columns are sample ID, phenotype, gender, and age, in that order.  
-&emsp;&emsp; The fifth column and subsequent columns are the other metadata.  
+&emsp;&emsp;&emsp;&emsp; The fifth column and subsequent columns are the other metadata.  
 &emsp;&emsp; At phenotype column, positive and negative samples shoud be 1 and 0, respectively. 
 
 Put covariate list for phylogenetic and gene association tests at `<OMARU_project_dir>/data` according to the following format:
