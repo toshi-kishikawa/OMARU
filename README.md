@@ -78,10 +78,8 @@ If you adopt your original phylogenetic reference data, FASTA file should be con
 ```
 If you adopt your original functional reference data, FASTA file should be converted to the format of Bowtie reference, and the additional following data should be prepared in `<OMARU_dir>/OMARU_databases`.
 
-&nbsp; 1 `<gene_reference>_annotatioin.txt.gz` (refer to `EXAMPLE_gene_annotation.txt`)
-
-&emsp; **Row** One gene per row
-  
+&nbsp; 1 `<gene_reference>_annotatioin.txt.gz` (refer to `EXAMPLE_gene_annotation.txt`)  
+&emsp; **Row** One gene per row    
 &emsp; **Column** The first column is gene ID. The second and subsequent columns are metadata of genes.
   
 &nbsp; 2 `header_<gene_reference>_annotatioin.txt` (refer to `header_EXAMPLE_gene_annotation.txt`)
