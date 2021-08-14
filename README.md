@@ -111,6 +111,7 @@ Put your sample list with metadata to predetermined folder (`<OMARU_project_dir>
 **Name** `original_sample_list.txt`
 
 **Row**  The first row is the header. The first four terms should be "Sample", "Phenotype",	"Sex", and "Age".
+
          One sample per row from the second row onwards.
 
 **Column** The first four columns are sample ID, phenotype, gender, and age, in that order. The fifth column and subsequent columns are the other metadata.
