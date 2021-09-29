@@ -105,11 +105,9 @@ Put your sample list with metadata to predetermined folder (`<OMARU_project_dir>
 &emsp;&emsp;&emsp;&emsp;&emsp; The fifth column and subsequent columns are the other metadata.  
 &emsp;&emsp;&emsp;&emsp;&emsp; At phenotype column, positive and negative samples should be 1 and 0, respectively. 
 
-Put covariate list for phylogenetic and gene association tests at `<OMARU_project_dir>/data` according to the following format:
-
-**Name** `covariates.txt`
-
-**Row**  One covariate per row. (Each word should be the same as the word of the header of `original_sample_list.txt`)
+Put covariate list for phylogenetic and gene association tests at `<OMARU_project_dir>/data` according to the following format:  
+&emsp; **Name** `covariates.txt`  
+&emsp; **Row**  One covariate per row. (Each word should be the same as the word of the header of `original_sample_list.txt`)
 
 Customize parameters of `<OMARU_project_dir>/config.yaml` that you may want to change. 
 | Parameter | Description | Default |
