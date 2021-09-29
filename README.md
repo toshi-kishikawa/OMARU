@@ -92,7 +92,7 @@ If you adopt your original functional reference data, FASTA file should be conve
 ## Create project directory <OMARU_project_dir> and set your data
 Users can create a new project directory as follows:
 ```bash
-    $ prepare_project_dir.sh OMARU_project_dir OMARU_dir
+    $ Prepare_project_dir.sh OMARU_project_dir OMARU_dir
 ```
 Put your input data of metagenomic shotgun sequencing (FASTQ format) to predetermined folder (`<OMARU_project_dir>/data/original_fastq`) according to the following format:  
 &emsp; **Name** `<Sample_ID>_R1.fastq.gz` `<Sample_ID>_R2.fastq.gz`
