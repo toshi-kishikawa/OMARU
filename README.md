@@ -247,7 +247,7 @@ Also, figures at `<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_associa
 
 ```bash
    $ cd OMARU_project_dir
-   $ snakemake -s Snakefiles/OMARU_FUNC_GSEA.sm 
+   $ snakemake -s Snakefiles/OMARU_Func_GSEA.sm 
 ```
 
 #### Output
