@@ -255,7 +255,7 @@ You can find summary statistics of result of GSEA with the name `<Phenotype>_res
 Also, figures at `<OMARU_project_dir>/result/FUNC_QCed3/<Gene_reference>_association_graph/<covariates>/GSEA_<covariates>`.
 
 ### Step 5-4: Links between the microbe MWAS and the germline GWAS of host
-Use a tool for pathway analysis with summary statistics from GWAS (e.g., [PASKAL](https://www2.unil.ch/cbg/index.php?title=Pascal)) in order to determine pathway enrichment of the human genome in your target phenotype.
+Use a tool for pathway analysis with summary statistics from GWAS (e.g., [Paskal](https://www2.unil.ch/cbg/index.php?title=Pascal)) in order to determine pathway enrichment of the human genome in your target phenotype.
   
 Put the pathway enrichment data of the human genome to predetermined folder (`<OMARU_project_dir>/data`) according to the following format:
 
