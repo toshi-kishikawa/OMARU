@@ -280,7 +280,7 @@ Set the genes to be evaluated for links with phylogenetic data as the parameter 
 ```
 
 #### Output
-You can check tables and figures of the statistical summary in the QC process at the output directory, `<OMARU_project_dir>/result/PHYL_FUNC_link/<TARGETS>/<TARGETS>_result`.
+You can check tables and figures of the statistical summary in the QC process at the output directory, `<OMARU_project_dir>/result/PHYL_FUNC_link/<TARGETS>`.
 
 ## Licence
 This software is freely available for academic users. Usage for commercial purposes is not allowed.  
